@@ -1,0 +1,334 @@
+/* Ecosystem Page Styles */
+.ecosystem-page,
+.stim-integration-page,
+.ncb-page,
+.dsp-page,
+.international-pro-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.page-header .subtitle {
+    font-size: 18px;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dsp-badges,
+.pro-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.dsp-badge,
+.pro-badge {
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dsp-badge.spotify { background: #1DB954; color: white; }
+.dsp-badge.apple { background: #FA2C56; color: white; }
+.dsp-badge.youtube { background: #FF0000; color: white; }
+.dsp-badge.amazon { background: #FF9900; color: white; }
+.pro-badge { background: var(--primary-light); color: white; }
+
+/* Flow Diagrams */
+.flow-diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    text-align: center;
+    width: 150px;
+}
+
+.flow-step .step-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--light);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.flow-step.highlight .step-icon {
+    background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 106, 168, 0.3);
+}
+
+.flow-arrow {
+    color: var(--gray);
+    font-size: 24px;
+}
+
+/* Cards and Grids */
+.principle-cards,
+.features-grid,
+.dsp-grid,
+.standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.principle-card,
+.feature-card,
+.dsp-card,
+.standard-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+.principle-card:hover,
+.feature-card:hover,
+.dsp-card:hover,
+.standard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.principle-icon,
+.feature-icon,
+.dsp-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* DSP Icons */
+.dsp-icon.spotify { background: #1DB954; }
+.dsp-icon.apple { background: #FA2C56; }
+.dsp-icon.youtube { background: #FF0000; }
+.dsp-icon.amazon { background: #FF9900; }
+.dsp-icon.deezer { background: #FEAA2D; }
+.dsp-icon.tidal { background: #00FFFF; }
+
+/* Workflow Steps */
+.workflow-steps,
+.processing-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.workflow-step,
+.processing-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* Data Fields */
+.data-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.field-group h4 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.field-group ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.field-group li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.field-group li:last-child {
+    border-bottom: none;
+}
+
+/* Formula Display */
+.formula,
+.formula-display {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    margin: 15px 0;
+    border-left: 4px solid var(--swedish-blue);
+}
+
+/* Stats */
+.dsp-stats,
+.ncb-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--swedish-blue);
+    margin-bottom: 5px;
+}
+
+/* Tables and Lists */
+.platform-comparison,
+.territory-breakdown,
+.calc-breakdown {
+    margin: 20px 0;
+}
+
+.platform,
+.territory,
+.calc-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.platform:last-child,
+.territory:last-child,
+.calc-line:last-child {
+    border-bottom: none;
+}
+
+.calc-line.total {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 18px;
+}
+
+/* International Regions */
+.region-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.region {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.region h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--swedish-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 32px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .flow-diagram {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    .data-fields {
+        grid-template-columns: 1fr;
+    }
+    .principle-cards,
+    .features-grid,
+    .dsp-grid,
+    .standards-grid,
+    .region-stats {
+        grid-template-columns: 1fr;
+    }
+    .workflow-step,
+    .processing-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

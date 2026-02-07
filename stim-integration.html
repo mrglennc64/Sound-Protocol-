@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STIM Integration</title>
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="stim-integration-page">
+        <div class="page-header">
+            <h1><i class="fas fa-file-csv"></i> STIM Integration</h1>
+            <p class="subtitle">Automating Swedish PRO data processing for publishers</p>
+            <div class="badge">🇸🇪 Official STIM-Compatible Format</div>
+        </div>
+        <div class="workflow-section">
+            <h2>The STIM Publisher Workflow We Automate</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Monthly STIM Report Download</h3>
+                        <p>Publisher logs into STIM "My Pages" and downloads CSV/Excel files</p>
+                        <div class="file-example">
+                            <i class="fas fa-file-excel"></i>
+                            <span>STIM_Statement_2026_03.xlsx</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Manual Data Entry (8-16 hours)</h3>
+                        <p>Publisher manually copies data into accounting software:</p>
+                        <ul class="manual-tasks">
+                            <li>ISWC code entry and validation</li>
+                            <li>Swedish tax calculation (25%)</li>
+                            <li>Currency conversion to SEK</li>
+                            <li>Collaborator share calculations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>SMTP Automation (5 minutes)</h3>
+                        <p>Our solution replaces steps 1-2 with:</p>
+                        <ul class="automated-features">
+                            <li><i class="fas fa-check"></i> Direct STIM CSV import</li>
+                            <li><i class="fas fa-check"></i> Automatic ISWC validation</li>
+                            <li><i class="fas fa-check"></i> 25% Swedish tax calculation</li>
+                            <li><i class="fas fa-check"></i> SEK distribution automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="technical-section">
+            <h2>Technical Integration Details</h2>
+            <div class="integration-details">
+                <div class="detail-card">
+                    <h3><i class="fas fa-database"></i> Data Fields We Process</h3>
+                    <div class="data-fields">
+                        <div class="field-group">
+                            <h4>Mandatory STIM Fields:</h4>
+                            <ul>
+                                <li><strong>STIM Work ID</strong> - Swedish PRO identifier</li>
+                                <li><strong>ISWC Code</strong> - International Standard Musical Work Code</li>
+                                <li><strong>Title</strong> - Song/work title (Swedish/English)</li>
+                                <li><strong>Writer(s)</strong> - Creator information</li>
+                                <li><strong>Publisher Share %</strong> - STIM-assigned percentage</li>
+                            </ul>
+                        </div>
+                        <div class="field-group">
+                            <h4>Financial Data:</h4>
+                            <ul>
+                                <li><strong>Gross Amount</strong> - SEK before deductions</li>
+                                <li><strong>STIM Fees</strong> - Administrative charges</li>
+                                <li><strong>Net Amount</strong> - Payment to publisher</li>
+                                <li><strong>Usage Type</strong> - Radio, TV, Streaming, Live</li>
+                                <li><strong>Territory</strong> - Sweden, EU, International</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3><i class="fas fa-file-export"></i> Supported Formats</h3>
+                    <div class="format-grid">
+                        <div class="format-item">
+                            <div class="format-icon">📊</div>
+                            <div class="format-info">
+                                <h4>CSV (Comma Separated Values)</h4>
+                                <p>Standard STIM export format. Automatic column mapping.</p>
+                            </div>
+                        </div>
+                        <div class="format-item">
+                            <div class="format-icon">📈</div>
+                            <div class="format-info">
+                                <h4>Excel (.xlsx, .xls)</h4>
+                                <p>Direct import from STIM Excel reports. Preserves formulas.</p>
+                            </div>
+                        </div>
+                        <div class="format-item">
+                            <div class="format-icon">📄</div>
+                            <div class="format-info">
+                                <h4>TXT (Tab Delimited)</h4>
+                                <p>Alternative STIM format. Automatic delimiter detection.</p>
+                            </div>
+                        </div>
+                        <div class="format-item">
+                            <div class="format-icon">🏢</div>
+                            <div class="format-info">
+                                <h4>CRD/CWR (Large Publishers)</h4>
+                                <p>Industry standards for major publishing companies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tax-section">
+            <h2><i class="fas fa-file-invoice"></i> Swedish Tax Automation</h2>
+            <p>Automatic handling of Swedish tax compliance directly from STIM data:</p>
+            <div class="tax-features">
+                <div class="tax-feature">
+                    <div class="tax-icon">25%</div>
+                    <div class="tax-content">
+                        <h4>Automatic Withholding</h4>
+                        <p>Calculates 25% Swedish tax on all domestic payments</p>
+                    </div>
+                </div>
+                <div class="tax-feature">
+                    <div class="tax-icon">📋</div>
+                    <div class="tax-content">
+                        <h4>K10 Form Generation</h4>
+                        <p>Creates Skatteverket-compatible tax forms automatically</p>
+                    </div>
+                </div>
+                <div class="tax-feature">
+                    <div class="tax-icon">🇪🇺</div>
+                    <div class="tax-content">
+                        <h4>EU Tax Rules</h4>
+                        <p>Applies correct tax rates for EU vs non-EU territories</p>
+                    </div>
+                </div>
+                <div class="tax-feature">
+                    <div class="tax-icon">💾</div>
+                    <div class="tax-content">
+                        <h4>10-Year Audit Trail</h4>
+                        <p>Blockchain-verified records for Swedish tax authorities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="validation-section">
+            <h2><i class="fas fa-check-circle"></i> STIM Data Validation</h2>
+            <div class="validation-checks">
+                <div class="check-item">
+                    <i class="fas fa-check success"></i>
+                    <span>ISWC Code Validation</span>
+                    <small>Verifies international work codes against CIS-Net database</small>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check success"></i>
+                    <span>IPI Number Validation</span>
+                    <small>Confirms Swedish composer/author identification numbers</small>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check success"></i>
+                    <span>STIM ID Cross-Reference</span>
+                    <small>Matches STIM work IDs to publisher's internal catalog</small>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check success"></i>
+                    <span>Territory Rights Validation</span>
+                    <small>Confirms Swedish vs international rights matches</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Swedish Music Protocol Technology</title>
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        function startQuickTour() {
+            alert('Quick Tour would start here.');
+        }
+        function launchFullDemo() {
+            window.location.href = 'show.html';
+        }
+        function scheduleDemo() {
+            alert('Scheduling a personalized demo.');
+        }
+        function showSignupForm() {
+            document.getElementById('signupForm').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('signupForm').offsetTop - 60, behavior: 'smooth' });
+        }
+        // FAQ toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.faq-question').forEach(function(q) {
+                q.addEventListener('click', function() {
+                    var answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="resources.html">Resources</a>
+        <a href="get-started.html" class="active">Get Started</a>
+    </nav>
+    <div class="get-started-page" style="max-width:1200px;margin:0 auto;padding:20px;">
+        <!-- Hero Section -->
+        <div class="page-header">
+            <h1><i class="fas fa-rocket"></i> Start Your Swedish Publishing Journey</h1>
+            <p class="subtitle">Get started in 3 simple steps. No commitment required.</p>
+            <div class="steps-indicator" style="display:flex;justify-content:center;gap:30px;margin-top:30px;">
+                <div class="step active">
+                    <div class="step-number" style="background:var(--swedish-blue);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto;">1</div>
+                    <div class="step-label" style="margin-top:10px;color:var(--primary-blue);font-weight:600;">Try Demo</div>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background:var(--primary-light);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto;">2</div>
+                    <div class="step-label" style="margin-top:10px;color:var(--primary-blue);font-weight:600;">Upload Data</div>
+                </div>
+                <div class="step">
+                    <div class="step-number" style="background:var(--accent);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto;">3</div>
+                    <div class="step-label" style="margin-top:10px;color:var(--primary-blue);font-weight:600;">Go Live</div>
+                </div>
+            </div>
+        </div>
+        <!-- Try Demo First (BEFORE asking for signup) -->
+        <div class="demo-section">
+            <h2>1. First, Try the Live Demo</h2>
+            <p>Experience how SMTP transforms Swedish publishing before signing up.</p>
+            <div class="demo-options" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:30px;">
+                <div class="demo-option feature-card">
+                    <div class="demo-icon" style="font-size:40px;">🎵</div>
+                    <h3>Quick Tour (2 min)</h3>
+                    <p>See the platform in action with sample data</p>
+                    <button class="btn btn-swedish" onclick="startQuickTour()">
+                        <i class="fas fa-play-circle"></i> Start Quick Tour
+                    </button>
+                </div>
+                <div class="demo-option feature-card swedish-highlight">
+                    <div class="demo-icon" style="font-size:40px;">🇸🇪</div>
+                    <h3>Full STIM Demo (5 min)</h3>
+                    <p>Upload a real STIM/NCB report and see automated processing</p>
+                    <button class="btn btn-primary" onclick="launchFullDemo()">
+                        <i class="fas fa-upload"></i> Launch Full Demo
+                    </button>
+                    <p class="demo-note">No registration required</p>
+                </div>
+                <div class="demo-option feature-card">
+                    <div class="demo-icon" style="font-size:40px;">📞</div>
+                    <h3>Personalized Demo</h3>
+                    <p>Schedule a 1-on-1 walkthrough for your publishing company</p>
+                    <button class="btn btn-secondary" onclick="scheduleDemo()">
+                        <i class="fas fa-calendar"></i> Schedule Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Trust Indicators -->
+        <div class="trust-section" style="margin:60px 0;">
+            <h2 class="text-center">Trusted by Swedish Publishing Industry</h2>
+            <div class="trust-badges" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-top:30px;">
+                <div class="trust-badge feature-card" style="display:flex;align-items:center;gap:20px;">
+                    <i class="fas fa-shield-alt" style="font-size:32px;color:var(--primary-blue);"></i>
+                    <div>
+                        <h4>STIM Compliant</h4>
+                        <p>Direct CSV integration</p>
+                    </div>
+                </div>
+                <div class="trust-badge feature-card" style="display:flex;align-items:center;gap:20px;">
+                    <i class="fas fa-file-contract" style="font-size:32px;color:var(--primary-blue);"></i>
+                    <div>
+                        <h4>Skatteverket Ready</h4>
+                        <p>K10 form automation</p>
+                    </div>
+                </div>
+                <div class="trust-badge feature-card" style="display:flex;align-items:center;gap:20px;">
+                    <i class="fas fa-lock" style="font-size:32px;color:var(--primary-blue);"></i>
+                    <div>
+                        <h4>GDPR Compliant</h4>
+                        <p>Swedish data protection</p>
+                    </div>
+                </div>
+                <div class="trust-badge feature-card" style="display:flex;align-items:center;gap:20px;">
+                    <i class="fas fa-bolt" style="font-size:32px;color:var(--primary-blue);"></i>
+                    <div>
+                        <h4>0-2 Day Payments</h4>
+                        <p>vs 90+ days traditional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Signup Form (OPTIONAL - after demo) -->
+        <div class="signup-section" id="signupForm" style="display: none;">
+            <h2>2. Create Your Account</h2>
+            <p>Ready to automate your Swedish publishing? Start your free trial.</p>
+            <form class="signup-form" id="registrationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" placeholder="Your Publishing Company" required>
+                    </div>
+                    <div class="form-group">
+                        <label>STIM Member ID (Optional)</label>
+                        <input type="text" placeholder="STIM-1234567">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="First and Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="you@company.se" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+46 70 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <select required>
+                            <option value="">Select Country</option>
+                            <option value="SE" selected>Sweden</option>
+                            <option value="NO">Norway</option>
+                            <option value="DK">Denmark</option>
+                            <option value="FI">Finland</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>What best describes your role?</label>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option value="publisher">Music Publisher</option>
+                        <option value="label">Record Label</option>
+                        <option value="artist">Artist/Songwriter</option>
+                        <option value="manager">Manager</option>
+                        <option value="accountant">Accountant/Bookkeeper</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>What are your main challenges? (Optional)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox">
+                            <input type="checkbox" name="challenges" value="slow-payments">
+                            Slow royalty payments (90+ days)
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="challenges" value="stim-reports">
+                            Manual STIM/NCB reporting
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="challenges" value="tax-forms">
+                            K10 tax form generation
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="challenges" value="transparency">
+                            Lack of payment transparency
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="challenges" value="international">
+                            Multi-territory management
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox">
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        Send me Swedish publishing industry insights (optional)
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">
+                    <i class="fas fa-play-circle"></i> Start Free Trial
+                </button>
+                <p class="form-note">
+                    <i class="fas fa-info-circle"></i> No credit card required. Free 30-day trial includes full STIM integration.
+                </p>
+            </form>
+        </div>
+        <!-- Free Trial Benefits -->
+        <div class="benefits-section">
+            <h2 class="text-center">What's Included in Your Free Trial</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon" style="background: var(--swedish-blue);">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <h3>Full STIM Integration</h3>
+                    <p>Import/export CSV files with Swedish PRO data</p>
+                    <ul>
+                        <li>Unlimited STIM reports</li>
+                        <li>ISWC/IPI validation</li>
+                        <li>Automated parsing</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" style="background: var(--primary-blue);">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>NCB Mechanical Calculator</h3>
+                    <p>Automated Swedish mechanical royalty calculations</p>
+                    <ul>
+                        <li>9.5% rate automation</li>
+                        <li>Stream calculations</li>
+                        <li>Territory splits</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" style="background: var(--accent);">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>K10 Tax Forms</h3>
+                    <p>Automatic Swedish tax form generation</p>
+                    <ul>
+                        <li>25% tax withholding</li>
+                        <li>Skatteverket-ready formats</li>
+                        <li>Tax ID validation</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon" style="background: var(--success);">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant SEK Payments</h3>
+                    <p>Test payment distribution in Swedish Krona</p>
+                    <ul>
+                        <li>0-2 day payment simulation</li>
+                        <li>Swish/Bankgiro integration</li>
+                        <li>Live exchange rates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need a STIM membership to use SMTP?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        No, you can use SMTP without STIM membership. However, STIM integration is available for members.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is my data safe during the trial?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, all data is encrypted and protected under Swedish GDPR laws. You can delete all data at any time.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens after the 30-day trial?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can choose from flexible pricing plans starting at 499 SEK/month. No automatic charges.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I cancel anytime?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, cancel anytime. Export all your data in STIM-compatible formats before cancellation.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2>Ready to Transform Your Swedish Publishing?</h2>
+            <p>Join leading Swedish publishers who process millions of SEK monthly with transparency and speed.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-large" onclick="launchFullDemo()">
+                    <i class="fas fa-play-circle"></i> Try Full Demo First
+                </button>
+                <button class="btn btn-swedish btn-large" onclick="showSignupForm()">
+                    <i class="fas fa-rocket"></i> Start Free Trial Now
+                </button>
+            </div>
+            <p class="cta-note">
+                <i class="fas fa-check-circle"></i> No credit card required • 30-day free trial • STIM integration included
+            </p>
+        </div>
+    </div>
+</body>
+</html>

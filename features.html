@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ SMPT - Swedish Publishing Features | Blockchain Royalty Platform</title>
+    <style>
+        :root {
+            --sweden-blue: #0055A5;
+            --sweden-yellow: #FFD700;
+            --sweden-light-blue: #E6F0FF;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #4a4a4a;
+            --light-gray: #f8f9fa;
+            --success-green: #28a745;
+            --warning-orange: #ffc107;
+            --danger-red: #dc3545;
+            --shadow: 0 10px 30px rgba(0, 85, 165, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header & Navigation */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sweden-blue);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--sweden-blue);
+        }
+        
+        .cta-button {
+            background: var(--sweden-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cta-button:hover {
+            background: #004080;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 85, 165, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--sweden-blue) 0%, #1e3a8a 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.03"/></svg>');
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sweden-yellow);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--sweden-yellow);
+            color: var(--dark-gray);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary:hover {
+            background: #e6c200;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sweden-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e9ecef;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 85, 165, 0.15);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--sweden-light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--sweden-blue);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+        }
+        
+        /* Comparison Slider */
+        .comparison-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--radius);
+            padding: 4rem;
+            margin: 4rem 0;
+        }
+        
+        .comparison-container {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+        }
+        
+        .comparison-box {
+            flex: 1;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .traditional-box {
+            background: white;
+            border: 2px solid #e9ecef;
+        }
+        
+        .smpt-box {
+            background: linear-gradient(135deg, var(--sweden-blue) 0%, #1e3a8a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .smpt-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.05"/></svg>');
+        }
+        
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .comparison-list {
+            list-style: none;
+        }
+        
+        .comparison-list li {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .traditional-box .comparison-list li {
+            background: #f8f9fa;
+            color: var(--danger-red);
+        }
+        
+        .smpt-box .comparison-list li {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .traditional-box .comparison-list li:before {
+            content: "✗";
+            color: var(--danger-red);
+            font-weight: bold;
+        }
+        
+        .smpt-box .comparison-list li:before {
+            content: "✓";
+            color: var(--sweden-yellow);
+            font-weight: bold;
+        }
+        
+        /* ROI Calculator */
+        .calculator-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 4rem;
+            box-shadow: var(--shadow);
+            margin: 4rem 0;
+        }
+        
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .calculator-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .input-group label {
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        .input-group input {
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--sweden-blue);
+            box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.1);
+        }
+        
+        .results-display {
+            background: linear-gradient(135deg, var(--sweden-light-blue) 0%, #f0f7ff 100%);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--sweden-blue);
+        }
+        
+        .result-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 85, 165, 0.1);
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sweden-blue);
+        }
+        
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 4rem 0;
+        }
+        
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sweden-blue) 0%, var(--sweden-yellow) 100%);
+            z-index: 1;
+        }
+        
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 4px solid var(--sweden-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sweden-blue);
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        /* Tiers Section */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .tier-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid #e9ecef;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tier-card.featured {
+            border-color: var(--sweden-blue);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 85, 165, 0.15);
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tier-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--sweden-yellow);
+            color: var(--dark-gray);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .tier-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .tier-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--sweden-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .tier-price span {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            font-weight: 400;
+        }
+        
+        .tier-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .tier-features li {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--sweden-blue) 0%, #1e3a8a 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-radius: var(--radius);
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.05"/></svg>');
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--sweden-yellow);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--sweden-yellow);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .comparison-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tier-card.featured {
+                transform: none;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i>
+                SMPT
+            </a>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#" class="active">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Demo</a>
+                <a href="#">Swedish Guide</a>
+                <a href="#" class="cta-button">
+                    <i class="fas fa-play-circle"></i> Start Demo
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate-in">
+            <h1>Transform Swedish Music Royalties with Blockchain Precision</h1>
+            <p class="hero-subtitle">The only platform built specifically for Sweden's STIM, NCB & Skatteverket ecosystem</p>
+            
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number" id="sekDistributed">4,230</span>
+                    <span class="stat-label">SEK Distributed Today</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Faster Than Traditional</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0%</span>
+                    <span class="stat-label">Manual Errors</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-rocket"></i> Start Free Demo
+                </a>
+                <a href="#" class="btn-secondary">
+                    <i class="fas fa-play-circle"></i> Watch 2-Minute Tour
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swedish Ecosystem Features -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2 class="section-title">Built for the Swedish Music Ecosystem</h2>
+                <p class="section-subtitle">Every feature is designed specifically for Swedish publishers, composers, and labels</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="feature-card animate-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <h3 class="feature-title">STIM Integration PRO</h3>
+                    <p class="feature-description">Seamless STIM workflow with real-time API connections and automatic ISWC validation against STIM's database</p>
+                    <ul class="feature-list">
+                        <li>Real-time STIM API connection</li>
+                        <li>Automatic ISWC validation</li>
+                        <li>Batch processing 10,000+ works</li>
+                        <li>Swedish work code auto-correction</li>
+                    </ul>
+                    <div class="progress" style="margin-top: 1.5rem; height: 6px; background: #e9ecef; border-radius: 3px;">
+                        <div class="progress-bar" style="width: 95%; height: 100%; background: var(--sweden-blue); border-radius: 3px;"></div>
+                    </div>
+                    <small style="color: var(--medium-gray); margin-top: 0.5rem; display: block;">STIM CSV → Automated Processing → Verified Results</small>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="feature-card animate-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="feature-title">NCB Rate Intelligence</h3>
+                    <p class="feature-description">Automated mechanical royalty calculations with live NCB rate updates and streaming platform integration</p>
+                    <ul class="feature-list">
+                        <li>Live NCB rate updates (quarterly)</li>
+                        <li>Streaming rate calculator</li>
+                        <li>Spotify/Apple Music integration</li>
+                        <li>"What-if" scenario modeling</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--sweden-light-blue); border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>1M streams in Sweden:</span>
+                            <strong>4,000 SEK</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="feature-card animate-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="feature-title">Skatteverket Compliance Suite</h3>
+                    <p class="feature-description">Complete Swedish tax automation with direct K10 submission and corporate tax ID validation</p>
+                    <ul class="feature-list">
+                        <li>Direct K10 submission API</li>
+                        <li>Swedish corporate tax ID validation</li>
+                        <li>Quarterly tax report automation</li>
+                        <li>Audit trail export for authorities</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                        <div style="flex: 1; text-align: center; padding: 1rem; background: white; border: 2px solid var(--danger-red); border-radius: 8px;">
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">Gross</div>
+                            <div style="font-weight: bold;">10,000 SEK</div>
+                        </div>
+                        <div style="flex: 1; text-align: center; padding: 1rem; background: white; border: 2px solid var(--sweden-blue); border-radius: 8px;">
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">Net</div>
+                            <div style="font-weight: bold;">7,500 SEK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Slider Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2 class="section-title">Traditional vs SMPT Platform</h2>
+                <p class="section-subtitle">See the dramatic difference in Swedish royalty processing</p>
+            </div>
+            
+            <div class="comparison-section animate-in delay-1">
+                <div class="comparison-container">
+                    <div class="comparison-box traditional-box">
+                        <h3 class="comparison-title">
+                            <i class="fas fa-times-circle" style="color: var(--danger-red);"></i>
+                            Traditional Systems
+                        </h3>
+                        <ul class="comparison-list">
+                            <li>Manual Excel sheets and emails</li>
+                            <li>90+ day payment delays</li>
+                            <li>STIM CSV import headaches</li>
+                            <li>Manual K10 form preparation</li>
+                            <li>Currency conversion errors</li>
+                            <li>Opaque royalty reporting</li>
+                            <li>No real-time tracking</li>
+                            <li>High error rates (5-15%)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-box smpt-box">
+                        <h3 class="comparison-title">
+                            <i class="fas fa-check-circle" style="color: var(--sweden-yellow);"></i>
+                            SMPT Swedish Platform
+                        </h3>
+                        <ul class="comparison-list">
+                            <li>Automated smart contracts</li>
+                            <li>48-hour payment processing</li>
+                            <li>STIM API integration</li>
+                            <li>Auto-generated K10 forms</li>
+                            <li>Real-time SEK exchange rates</li>
+                            <li>Blockchain transparency</li>
+                            <li>Live distribution tracking</li>
+                            <li>Zero manual errors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2 class="section-title">Calculate Your Swedish Publishing Savings</h2>
+                <p class="section-subtitle">See exactly how much SMPT can save your business</p>
+            </div>
+            
+            <div class="calculator-section animate-in delay-1">
+                <div class="calculator-container">
+                    <div class="calculator-inputs">
+                        <h3 style="color: var(--sweden-blue); margin-bottom: 1.5rem;">Input Your Numbers</h3>
+                        
+                        <div class="input-group">
+                            <label for="monthlyVolume">Monthly Royalty Volume (SEK)</label>
+                            <input type="number" id="monthlyVolume" value="50000" min="0" step="1000" oninput="calculateROI()">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="worksCount">Number of Works Managed</label>
+                            <input type="number" id="worksCount" value="150" min="0" step="10" oninput="calculateROI()">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="territories">Territories Covered</label>
+                            <select id="territories" class="form-control" onchange="calculateROI()">
+                                <option value="sweden">Sweden Only</option>
+                                <option value="scandinavia" selected>Scandinavia</option>
+                                <option value="eu">European Union</option>
+                                <option value="worldwide">Worldwide</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="staffHours">Current Monthly Staff Hours</label>
+                            <input type="number" id="staffHours" value="80" min="0" step="5" oninput="calculateROI()">
+                        </div>
+                    </div>
+                    
+                    <div class="results-display">
+                        <h3 style="color: var(--sweden-blue); margin-bottom: 1.5rem;">Your Estimated Savings</h3>
+                        
+                        <div class="result-item">
+                            <div class="result-label">Time Saved Per Month</div>
+                            <div class="result-value" id="timeSaved">40 hours</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-label">Error Reduction</div>
+                            <div class="result-value" id="errorReduction">95%</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-label">Monthly Cost Savings</div>
+                            <div class="result-value" id="costSavings">12,500 SEK</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-label">Annual ROI</div>
+                            <div class="result-value" id="annualROI">312%</div>
+                        </div>
+                        
+                        <div style="margin-top: 2rem; padding: 1rem; background: rgba(0, 85, 165, 0.1); border-radius: 8px; border-left: 4px solid var(--sweden-blue);">
+                            <strong>Real Results Example:</strong>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">"Svensk Musik AB saved 73% on processing time and recovered 12,500 SEK monthly with SMPT"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2 class="section-title">Your Swedish Royalty Journey</h2>
+                <p class="section-subtitle">Four simple steps to transform your publishing workflow</p>
+            </div>
+            
+            <div class="process-steps animate-in delay-1">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Connect</h4>
+                        <p>Connect your STIM and NCB accounts, upload existing catalogs, and set up Swedish bank account integration</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Automate</h4>
+                        <p>Configure Swedish tax rules (25% auto-withholding), territory splits, and publisher/writer percentages</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Verify</h4>
+                        <p>Deploy smart contracts on Monad blockchain, verify all transactions, and complete Swedish compliance checks</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Grow</h4>
+                        <p>Access real-time analytics, expand to multi-territory distribution, and integrate with accounting systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tiers Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-in">
+                <h2 class="section-title">Built for Every Swedish Music Business</h2>
+                <p class="section-subtitle">Choose the plan that fits your publishing needs</p>
+            </div>
+            
+            <div class="tiers-grid">
+                <!-- Tier 1 -->
+                <div class="tier-card animate-in delay-1">
+                    <div class="tier-title">🎵 Independent Publishers</div>
+                    <div class="tier-price">Free<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li>Up to 10 works per month</li>
+                        <li>Basic STIM CSV import</li>
+                        <li>NCB calculator (Sweden only)</li>
+                        <li>Manual K10 form generation</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; justify-content: center;">
+                        Start Free
+                    </a>
+                </div>
+                
+                <!-- Tier 2 -->
+                <div class="tier-card featured animate-in delay-2">
+                    <div class="tier-badge">MOST POPULAR</div>
+                    <div class="tier-title">🏢 Mid-sized Labels</div>
+                    <div class="tier-price">499 SEK<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li>Unlimited works</li>
+                        <li>STIM API access</li>
+                        <li>NCB multi-territory rates</li>
+                        <li>Automated K10 generation</li>
+                        <li>Team collaboration tools</li>
+                        <li>Priority email & chat support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; justify-content: center; background: var(--sweden-yellow); color: var(--dark-gray);">
+                        <i class="fas fa-crown"></i> Start 14-Day Trial
+                    </a>
+                </div>
+                
+                <!-- Tier 3 -->
+                <div class="tier-card animate-in delay-3">
+                    <div class="tier-title">🏛️ Enterprise</div>
+                    <div class="tier-price">Custom<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li>White-label platform</li>
+                        <li>Direct Skatteverket integration</li>
+                        <li>Custom API development</li>
+                        <li>Dedicated Swedish support team</li>
+                        <li>Advanced analytics & reporting</li>
+                        <li>SLA guarantee (99.9% uptime)</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="width: 100%; justify-content: center;">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section animate-in">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Transform Your Swedish Publishing?</h2>
+            <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem;">
+                Join the future of music royalties with blockchain-powered automation built for Sweden
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary" style="background: var(--sweden-yellow); color: var(--dark-gray); padding: 1.25rem 2.5rem;">
+                    <i class="fas fa-rocket"></i> Start Your Free Demo
+                </a>
+                <a href="#" class="btn-secondary" style="padding: 1.25rem 2.5rem;">
+                    <i class="fas fa-calendar-check"></i> Book Swedish Demo
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">No credit card required</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">14-day free trial</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Swedish support included</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SMPT Swedish Edition</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem;">
+                    The complete blockchain solution for Swedish music publishing, STIM integration, and Skatteverket compliance.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Swedish Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">STIM Integration Guide</a></li>
+                    <li><a href="#">NCB Rate Calculator</a></li>
+                    <li><a href="#">K10 Tax Form Tutorial</a></li>
+                    <li><a href="#">Swedish Compliance Checklist</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-envelope"></i> sweden@smpt.tech</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +46 8 123 4567</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Stockholm, Sweden</a></li>
+                    <li><a href="#"><i class="fab fa-github"></i> GitHub Repository</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>⚡ SMPT - Swedish Publishing Edition v2.0 | Live on Monad Testnet | © 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.animate-in');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.animation = 'fadeInUp 0.6s ease forwards';
+                }, index * 100);
+            });
+            
+            // Initialize SEK counter
+            updateSEKCounter();
+            calculateROI();
+        });
+        
+        // Animated SEK counter
+        function updateSEKCounter() {
+            let current = 4230;
+            const target = 4230 + Math.floor(Math.random() * 1000);
+            const element = document.getElementById('sekDistributed');
+            
+            const interval = setInterval(() => {
+                current += Math.ceil((target - current) / 10);
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                element.textContent = current.toLocaleString();
+            }, 50);
+            
+            // Update every 30 seconds
+            setInterval(updateSEKCounter, 30000);
+        }
+        
+        // ROI Calculator
+        function calculateROI() {
+            const monthlyVolume = parseInt(document.getElementById('monthlyVolume').value) || 0;
+            const worksCount = parseInt(document.getElementById('worksCount').value) || 0;
+            const staffHours = parseInt(document.getElementById('staffHours').value) || 0;
+            const territories = document.getElementById('territories').value;
+            
+            // Calculate savings
+            let timeSaved = Math.floor(staffHours * 0.73); // 73% time saved
+            let errorReduction = '95%';
+            
+            // Calculate cost savings based on volume and territories
+            let costSavings = monthlyVolume * 0.25; // 25% savings on volume
+            
+            // Adjust for territories
+            const territoryMultiplier = {
+                'sweden': 1,
+                'scandinavia': 1.2,
+                'eu': 1.5,
+                'worldwide': 2
+            };
+            
+            costSavings *= territoryMultiplier[territories];
+            
+            // Calculate annual ROI
+            const annualSavings = costSavings * 12;
+            const annualCost = 499 * 12; // Using mid-tier as baseline
+            const annualROI = Math.round((annualSavings / annualCost) * 100);
+            
+            // Update display
+            document.getElementById('timeSaved').textContent = timeSaved + ' hours';
+            document.getElementById('errorReduction').textContent = errorReduction;
+            document.getElementById('costSavings').textContent = Math.round(costSavings).toLocaleString() + ' SEK';
+            document.getElementById('annualROI').textContent = annualROI + '%';
+        }
+        
+        // Live SEK exchange rate ticker
+        function updateExchangeRates() {
+            const rates = {
+                USD: 0.095,
+                EUR: 0.087,
+                GBP: 0.074,
+                NOK: 1.03,
+                DKK: 0.65
+            };
+            
+            // Simulate small fluctuations
+            Object.keys(rates).forEach(currency => {
+                rates[currency] *= (0.999 + Math.random() * 0.002);
+            });
+            
+            // In a real implementation, you would update UI elements with these rates
+            console.log('Updated exchange rates:', rates);
+        }
+        
+        // Update rates every 10 seconds
+        setInterval(updateExchangeRates, 10000);
+        updateExchangeRates();
+        
+        // Interactive territory map simulation
+        document.querySelectorAll('.territory-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const territory = this.dataset.territory;
+                alert(`Showing rates and rules for ${territory.toUpperCase()} territory`);
+            });
+        });
+    </script>
+</body>
+</html>
