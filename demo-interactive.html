@@ -836,84 +836,118 @@
         <div class="demo-header">
             <div class="logo">
                 <i class="fas fa-music"></i>
-                <span>Live Testnet Demonstration</span>
+                <span>Roya – Transparency & Verification Layer for Swedish Music Publishing</span>
             </div>
             <p class="subtitle">
-                Roya — Transparency & Verification Layer for Swedish Music Publishing
+                A transparency and verification layer for Swedish music publishing workflows<br>
+                <span style="color: var(--accent); font-weight: 600;">
+                    Verifiable • Reviewable • Interactive • Roya
+                </span>
             </p>
-            <div class="demo-status" id="demoStatus">
-                <i class="fas fa-bolt"></i>
-                <span>Evaluation Environment — For Review Purposes Only</span>
-            </div>
-            <div class="swedish-features" style="margin-top:40px;">
-                <div class="feature-item" style="max-width: 700px; margin: 0 auto;">
-                    <p style="font-size:1.1em; font-weight:600;">This demonstration showcases a real, on-chain prototype deployed on the Monad Testnet.<br>All outputs are evaluation artifacts. No real payments occur.</p>
-                    <h3 style="margin-top:2em;">What This Demo Shows</h3>
-                    <p>This interactive demonstration illustrates how royalty data can be verified before entering accounting or payment systems.</p>
-                    <ul style="margin:1em 0 2em 0;">
-                        <li>Upload a sample royalty report</li>
-                        <li>Validate ownership splits and calculations</li>
-                        <li>Generate an immutable execution reference</li>
-                        <li>Review blockchain-based verification records</li>
-                        <li>Export structured payment instructions for evaluation</li>
-                    </ul>
-                    <h4>Upload & Parse Royalty Data</h4>
-                    <p>Upload a CSV, Excel, or PDF file containing:</p>
-                    <ul>
-                        <li>Song metadata</li>
-                        <li>Contributor roles</li>
-                        <li>Ownership percentages</li>
-                    </ul>
-                    <p>The system validates:</p>
-                    <ul>
-                        <li>Mathematical correctness</li>
-                        <li>Structural integrity</li>
-                        <li>Industry-aligned formatting</li>
-                    </ul>
-                    <p>You may also use a provided sample STIM-style report.</p>
-                    <h4 style="margin-top:2em;">Verification & Execution Reference</h4>
-                    <p>Once validated, the system:</p>
-                    <ul>
-                        <li>Generates a cryptographic execution reference</li>
-                        <li>Deploys it to the Monad Testnet</li>
-                        <li>Produces an explorer-viewable record</li>
-                        <li>Enables independent verification</li>
-                    </ul>
-                    <p>This reference represents verified intent, not payment execution.</p>
-                    <h4 style="margin-top:2em;">Payment Flow Simulation</h4>
-                    <p>The demo simulates how verified data could be:</p>
-                    <ul>
-                        <li>Exported to accounting systems</li>
-                        <li>Reviewed by payment providers</li>
-                        <li>Approved within licensed environments</li>
-                    </ul>
-                    <p>No funds are moved.<br>No bank connections are used.</p>
-                    <h4 style="margin-top:2em;">Evaluation Notice</h4>
-                    <p>This prototype:</p>
-                    <ul>
-                        <li>Operates exclusively in a test environment</li>
-                        <li>Uses synthetic or sample data</li>
-                        <li>Does not initiate financial transactions</li>
-                        <li>Is designed for technical, regulatory, and industry evaluation</li>
-                    </ul>
-                    <h4 style="margin-top:2em;">Live Infrastructure</h4>
-                    <ul>
-                        <li>Smart contracts deployed on Monad Testnet</li>
-                        <li>Verified source code</li>
-                        <li>Explorer-accessible execution references</li>
-                        <li>Contract (Evaluation):<br><span style="font-family:monospace;">0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4</span></li>
-                    </ul>
-                    <h4 style="margin-top:2em;">Why This Matters</h4>
-                    <p>Roya demonstrates that transparent, verifiable royalty workflows are technically feasible without disrupting existing systems or assuming financial risk.</p>
-                    <p>This demo supports:</p>
-                    <ul>
-                        <li>Ecosystem grants</li>
-                        <li>Research evaluation</li>
-                        <li>Industry review</li>
-                        <li>Responsible innovation</li>
-                    </ul>
+            
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active" id="step1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Upload & Parse</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Verification & Execution Reference</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Payment Instruction Simulation</div>
                 </div>
             </div>
+            
+            <div class="demo-status" id="demoStatus">
+                <i class="fas fa-bolt"></i>
+                <span>Royalty Verification Prototype Live on Monad Testnet • CHAIN ID: 10143</span>
+            </div>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <button class="tab active" onclick="switchTab('upload')">
+                <i class="fas fa-cloud-upload-alt"></i>
+                Upload & Parse
+            </button>
+            <button class="tab" onclick="switchTab('blockchain')">
+                <i class="fas fa-link"></i>
+                Verification & Execution Reference
+            </button>
+            <button class="tab" onclick="switchTab('payments')">
+                <i class="fas fa-money-check-alt"></i>
+                Payment Instruction Simulation
+            </button>
+        </div>
+
+        <div class="main-layout">
+            <div class="upload-panel">
+                <!-- Upload Tab -->
+                <div id="uploadTab" class="tab-content active">
+                    <div class="upload-section" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-instructions">
+                            <h3>Upload Your Split Sheet</h3>
+                            <p>Upload a CSV, Excel, or PDF file containing song metadata and royalty splits. We convert the data into a verifiable execution reference deployed as a smart contract in a test environment, designed to support Swedish royalty and tax reporting workflows.</p>
+                        </div>
+
+                        <div class="file-input-container">
+                            <input type="file" id="fileInput" class="file-input" accept=".csv,.xlsx,.xls,.pdf,.json" onchange="handleFileSelect(event)">
+                        </div>
+
+                        <div class="supported-formats">
+                            <div class="format-badge">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </div>
+                            <div class="format-badge">
+                                <i class="fas fa-file-excel"></i>
+                                Excel
+                            </div>
+                            <div class="format-badge">
+                                <i class="fas fa-file-pdf"></i>
+                                PDF
+                            </div>
+                            <div class="format-badge">
+                                <i class="fas fa-file-code"></i>
+                                JSON
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 30px; color: var(--gray); font-size: 14px;">
+                            <p>Or try with our <a href="#" style="color: var(--secondary); font-weight: 600;" onclick="loadSampleData(); return false;">sample STIM split sheet</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Demo Section -->
+                    <div class="swedish-features">
+                        <h3 class="text-center mb-30">Interactive Evaluation Demo</h3>
+                        <div class="features-grid" style="display: flex; justify-content: center; align-items: flex-start;">
+                            <div class="feature-item" style="max-width: 520px; width: 100%; margin: 0 auto;">
+                                <p>Experience the full Roya verification workflow with our evaluation demonstration.</p>
+                                <ul style="margin-top: 1em;">
+                                    <li><strong>Upload:</strong> Upload a sample STIM royalty report</li>
+                                    <li><strong>Verify:</strong> Watch as Roya validates splits and calculations</li>
+                                    <li><strong>Generate:</strong> Create an immutable execution reference</li>
+                                    <li><strong>Export:</strong> Generate sample payment instructions for downstream accounting or payment systems</li>
+                                </ul>
+                                
+                                <!-- Evaluation Disclaimer -->
+                                <div class="evaluation-disclaimer mt-30">
+                                    <h4>
+                                        <i class="fas fa-info-circle"></i>
+                                        Evaluation Environment Notice
+                                    </h4>
+                                    <p>This is a testnet demonstration for evaluation purposes only. No real financial transactions occur. Roya does not custody funds or initiate payments. All smart contracts are deployed in test environments for transparency and review.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="preview-section" id="previewSection">
                         <div class="preview-header">
