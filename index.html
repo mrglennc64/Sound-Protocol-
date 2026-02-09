@@ -558,47 +558,50 @@
                 <p style="font-size:1.1em; font-weight:600; margin-bottom: 0.5em;">Verifiable royalty data.<br>Audit-ready execution references.<br>No payments. No funds. No regulatory risk.</p>
                 <p>Roya is a research and innovation prototype designed to strengthen transparency, trust, and accountability in music royalty workflows.</p>
                 <p>It introduces a verifiable, audit-ready layer at the start of the royalty chain — before data reaches accounting or payment systems.</p>
+
                 <h2 style="margin-top:2em;">Why Roya Exists</h2>
                 <p>Music royalty workflows remain opaque, fragmented, and dispute-prone.</p>
                 <ul>
-                    <li>Creators cannot independently verify ownership splits.</li>
-                    <li>Publishers rely on manual, error-prone checks.</li>
-                    <li>Errors propagate downstream.</li>
-                    <li>Disputes delay payments and erode trust.</li>
+                    <li>Creators cannot independently verify ownership splits</li>
+                    <li>Publishers rely on manual checks</li>
+                    <li>Errors propagate downstream</li>
+                    <li>Disputes delay payments</li>
                 </ul>
-                <p>Roya addresses these challenges by verifying royalty logic before execution.</p>
+                <p>Roya addresses this by verifying royalty logic before execution.</p>
+
                 <h2 style="margin-top:2em;">What Roya Does</h2>
-                <p>Roya provides an independent verification layer that:</p>
                 <ul>
                     <li>Validates royalty metadata and ownership splits</li>
                     <li>Generates immutable execution references</li>
                     <li>Records verification proofs on a blockchain testnet</li>
-                    <li>Produces structured outputs for accounting and payment systems</li>
+                    <li>Produces structured outputs for accounting systems</li>
                     <li>Enables independent review without moving money</li>
                 </ul>
                 <p style="font-weight:600;">Roya verifies intent — not payments.</p>
+
                 <h2 style="margin-top:2em;">What Roya Does Not Do</h2>
-                <p>To ensure regulatory clarity and safe evaluation, Roya:</p>
                 <ul style="color:#d32f2f;">
-                    <li>❌ Does not hold or transfer funds</li>
-                    <li>❌ Does not perform bank transactions</li>
-                    <li>❌ Does not store banking credentials</li>
-                    <li>❌ Does not replace payment providers or collection societies</li>
+                    <li>❌ Hold or transfer funds</li>
+                    <li>❌ Perform bank transactions</li>
+                    <li>❌ Store banking credentials</li>
+                    <li>❌ Replace payment providers or collection societies</li>
                 </ul>
-                <p style="color:#607d8b;">Roya is a verification service, not a financial service.</p>
+                <p style="color:#607d8b;">Roya is a verification layer, not a financial service.</p>
+
                 <h2 style="margin-top:2em;">Built for Evaluation & Public Value</h2>
                 <ul>
                     <li>Testnet-based deployment</li>
-                    <li>Transparent, reviewable verification logic</li>
-                    <li>Clear regulatory and operational boundaries</li>
+                    <li>Transparent, reviewable logic</li>
+                    <li>Clear regulatory boundaries</li>
                     <li>Designed for ecosystem grants and research review</li>
                 </ul>
+
                 <h2 style="margin-top:2em;">Explore</h2>
                 <ul>
                     <li><a href="#demo" class="btn-primary" style="margin-bottom:8px;"><i class="fas fa-play-circle"></i> Live Demo — See real verification on testnet</a></li>
                     <li><a href="#use-cases" class="btn-primary" style="background: var(--accent); color: var(--primary); margin-bottom:8px;"><i class="fas fa-users"></i> Use Cases — Who benefits and how</a></li>
                     <li><a href="#features" class="btn-primary" style="background: var(--secondary); margin-bottom:8px;"><i class="fas fa-check-circle"></i> Capabilities — What is verified</a></li>
-                    <li><a href="#grant" class="btn-primary" style="background: linear-gradient(135deg, var(--primary), var(--secondary));"><i class="fas fa-file-alt"></i> Grant Documentation — Public value, scope, and compliance</a></li>
+                    <li><a href="#grant" class="btn-primary" style="background: linear-gradient(135deg, var(--primary), var(--secondary));"><i class="fas fa-file-alt"></i> Grant Documentation — Public value, scope, compliance</a></li>
                 </ul>
             </div>
             
@@ -626,93 +629,41 @@
         
         'demo': `
             <div class="page-header">
-                <h1 class="page-title">Live Testnet Demonstration</h1>
-                <p class="page-lead">Roya — Transparency & Verification Layer for Swedish Music Publishing</p>
+                <h1 class="page-title">Live Demo — Monad Testnet</h1>
+                <p class="page-lead">Real verification. Real smart contracts. No real money.</p>
             </div>
-            <div class="notice-box">
-                <strong>Evaluation Environment — For Review Purposes Only</strong><br>
-                This demonstration showcases a real, on-chain prototype deployed on the Monad Testnet.<br>
-                All outputs are evaluation artifacts. No real payments occur.
+            <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
+                <p>This demo showcases Roya’s verification workflow using smart contracts deployed on the Monad Testnet.</p>
+                <p>All contracts are publicly verifiable in the blockchain explorer.</p>
             </div>
-            <div class="demo-flow" style="display: flex; flex-direction: column; gap: 32px; margin-top: 32px;">
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h2>What This Demo Shows</h2>
-                    <p>This interactive demonstration illustrates how royalty data can be verified before entering accounting or payment systems.</p>
-                    <ul>
-                        <li>Upload a sample royalty report</li>
-                        <li>Validate ownership splits and calculations</li>
-                        <li>Generate an immutable execution reference</li>
-                        <li>Review blockchain-based verification records</li>
-                        <li>Export structured payment instructions for evaluation</li>
-                    </ul>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Upload & Parse Royalty Data</h3>
-                    <p>Upload a CSV, Excel, or PDF file containing:</p>
-                    <ul>
-                        <li>Song metadata</li>
-                        <li>Contributor roles</li>
-                        <li>Ownership percentages</li>
-                    </ul>
-                    <p>The system validates:</p>
-                    <ul>
-                        <li>Mathematical correctness</li>
-                        <li>Structural integrity</li>
-                        <li>Industry-aligned formatting</li>
-                    </ul>
-                    <p>You may also use a provided sample STIM-style report.</p>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Verification & Execution Reference</h3>
-                    <p>Once validated, the system:</p>
-                    <ul>
-                        <li>Generates a cryptographic execution reference</li>
-                        <li>Deploys it to the Monad Testnet</li>
-                        <li>Produces an explorer-viewable record</li>
-                        <li>Enables independent verification</li>
-                    </ul>
-                    <p>This reference represents verified intent, not payment execution.</p>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Payment Flow Simulation</h3>
-                    <p>The demo simulates how verified data could be:</p>
-                    <ul>
-                        <li>Exported to accounting systems</li>
-                        <li>Reviewed by payment providers</li>
-                        <li>Approved within licensed environments</li>
-                    </ul>
-                    <p>No funds are moved.<br>No bank connections are used.</p>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Evaluation Notice</h3>
-                    <p>This prototype:</p>
-                    <ul>
-                        <li>Operates exclusively in a test environment</li>
-                        <li>Uses synthetic or sample data</li>
-                        <li>Does not initiate financial transactions</li>
-                        <li>Is designed for technical, regulatory, and industry evaluation</li>
-                    </ul>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Live Infrastructure</h3>
-                    <ul>
-                        <li>Smart contracts deployed on Monad Testnet</li>
-                        <li>Verified source code</li>
-                        <li>Explorer-accessible execution references</li>
-                        <li>Contract (Evaluation):<br><span style="font-family:monospace;">0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4</span></li>
-                    </ul>
-                </div>
-                <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
-                    <h3>Why This Matters</h3>
-                    <p>Roya demonstrates that transparent, verifiable royalty workflows are technically feasible without disrupting existing systems or assuming financial risk.</p>
-                    <p>This demo supports:</p>
-                    <ul>
-                        <li>Ecosystem grants</li>
-                        <li>Research evaluation</li>
-                        <li>Industry review</li>
-                        <li>Responsible innovation</li>
-                    </ul>
-                </div>
+            <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
+                <h2>What This Demo Demonstrates</h2>
+                <ul>
+                    <li>Upload and parse royalty split data</li>
+                    <li>Validate ownership percentages and metadata</li>
+                    <li>Generate immutable execution references</li>
+                    <li>Record verification proofs on-chain</li>
+                    <li>Export structured outputs for downstream systems</li>
+                </ul>
+                <p style="margin-top:1em; font-style:italic;">This is a testnet demonstration. No financial transactions occur.</p>
+            </div>
+            <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
+                <h2>Demo Workflow</h2>
+                <ol>
+                    <li><strong>Upload & Parse</strong><br>Upload a CSV, Excel, PDF, or JSON split sheet.<br>Roya parses contributor data and ownership splits.</li>
+                    <li><strong>Verify Logic</strong><br>The system validates totals, roles, and internal consistency.</li>
+                    <li><strong>Generate Execution Reference</strong><br>A cryptographic reference is created and recorded on testnet.</li>
+                    <li><strong>Export Results</strong><br>Structured outputs are generated for accounting or reporting workflows.</li>
+                </ol>
+            </div>
+            <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
+                <h2>Live Infrastructure</h2>
+                <p>This demo uses real smart contracts deployed on the Monad Testnet.</p>
+                <p>All verification logic and execution references are independently reviewable via the blockchain explorer.</p>
+            </div>
+            <div class="content-block" style="box-shadow: var(--shadow); border-radius: 16px; background: var(--white); padding: 32px;">
+                <h2>Important Note</h2>
+                <p>Roya verifies royalty intent and logic — not payments.<br>No funds are held, transferred, or processed.</p>
             </div>
             
             <div class="content-block">
@@ -751,72 +702,68 @@
         
         'use-cases': `
             <div class="page-header">
-                <h1 class="page-title">Use Cases</h1>
+                <h1 class="page-title">Capabilities</h1>
                 <p class="page-lead">
-                    Who Roya Is For — and What It Enables
+                    Roya focuses on verification, transparency, and auditability — not payment execution.
                 </p>
             </div>
 
-            <div class="use-cases">
-                <div class="use-case">
-                    <h3>Independent Songwriters & Artists</h3>
-                    <h4>Verify ownership before money moves</h4>
-                    <p>Independent creators often lack visibility into how royalty splits are calculated and executed.</p>
+            <div class="features">
+                <div class="feature">
+                    <h3>Royalty Metadata Validation</h3>
                     <ul>
-                        <li>Independently review ownership splits</li>
-                        <li>Confirm percentage allocations before payment</li>
-                        <li>Detect errors early in the process</li>
-                        <li>Reduce disputes and delays</li>
+                        <li>Verifies contributor lists and ownership percentages</li>
+                        <li>Confirms totals equal 100%</li>
+                        <li>Flags inconsistencies and errors</li>
                     </ul>
-                    <p><strong>Outcome:</strong> Increased trust, fewer conflicts, and fairer compensation.</p>
                 </div>
-                <div class="use-case">
-                    <h3>Music Publishers</h3>
-                    <h4>Reduce disputes and administrative overhead</h4>
-                    <p>Publishers manage complex royalty data across multiple systems, often relying on manual checks.</p>
+                <div class="feature">
+                    <h3>Ownership Split Verification</h3>
                     <ul>
-                        <li>Validate royalty metadata before downstream processing</li>
-                        <li>Generate verifiable execution references</li>
-                        <li>Reduce reconciliation time</li>
-                        <li>Provide transparent documentation to rights holders</li>
+                        <li>Ensures splits are mathematically correct</li>
+                        <li>Detects missing or conflicting data</li>
+                        <li>Produces clear validation results</li>
                     </ul>
-                    <p><strong>Outcome:</strong> Faster processing, lower operational cost, improved trust.</p>
                 </div>
-                <div class="use-case">
-                    <h3>Accounting & Payment Providers</h3>
-                    <h4>Receive clean, verified inputs</h4>
-                    <p>Accounting and payment systems are not designed to resolve ownership disputes.</p>
+                <div class="feature">
+                    <h3>Immutable Execution References</h3>
                     <ul>
-                        <li>Pre-validated royalty instructions</li>
-                        <li>Clear audit trails</li>
-                        <li>Structured data ready for integration</li>
-                        <li>Reduced exception handling</li>
+                        <li>Generates cryptographic execution references</li>
+                        <li>Stores verification proofs on a blockchain testnet</li>
+                        <li>Enables independent review and replay</li>
                     </ul>
-                    <p><strong>Outcome:</strong> Fewer errors, cleaner accounting, safer execution.</p>
                 </div>
-                <div class="use-case">
-                    <h3>Rights Organizations & Auditors</h3>
-                    <h4>Audit without disruption</h4>
-                    <p>Roya introduces an audit-ready verification layer without altering existing workflows.</p>
+                <div class="feature">
+                    <h3>Blockchain-Based Transparency</h3>
                     <ul>
-                        <li>Independent verification of split logic</li>
-                        <li>Review of historical execution references</li>
-                        <li>Dispute resolution support</li>
-                        <li>Transparency reporting</li>
+                        <li>Testnet-only deployment</li>
+                        <li>Publicly verifiable smart contracts</li>
+                        <li>No financial transactions</li>
                     </ul>
-                    <p><strong>Outcome:</strong> Stronger governance and accountability.</p>
                 </div>
-                <div class="use-case">
-                    <h3>Public Sector & Cultural Institutions</h3>
-                    <h4>Support fair and transparent creative economies</h4>
-                    <p>Roya supports cultural policy goals by:</p>
+                <div class="feature">
+                    <h3>Structured Output Generation</h3>
                     <ul>
-                        <li>Strengthening creator rights</li>
-                        <li>Reducing power asymmetries</li>
-                        <li>Improving transparency in digital creative industries</li>
-                        <li>Supporting sustainable creative work</li>
+                        <li>Produces exportable verification results</li>
+                        <li>Designed for accounting and reporting systems</li>
+                        <li>Supports interoperability</li>
                     </ul>
-                    <p><strong>Outcome:</strong> Measurable public value and policy alignment.</p>
+                </div>
+                <div class="feature">
+                    <h3>Audit-Ready Design</h3>
+                    <ul>
+                        <li>Full verification trails</li>
+                        <li>Transparent logic</li>
+                        <li>Clear separation of responsibilities</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <h3>Regulatory-Safe Architecture</h3>
+                    <ul>
+                        <li>No funds handled</li>
+                        <li>No payment execution</li>
+                        <li>PSD2-compatible design principles</li>
+                    </ul>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
