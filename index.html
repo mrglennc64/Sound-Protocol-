@@ -105,7 +105,7 @@
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
-            margin-left: 15px;
+            margin-left: 4px;
             border: 1px solid rgba(0,106,168,0.2);
             box-shadow: 0 2px 8px rgba(0,106,168,0.1);
         }
@@ -506,8 +506,7 @@
                 <li><a href="#index">Home</a></li>
                 <li><a href="#demo">Demo</a></li>
                 <li><a href="#use-cases">Use Cases</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#features">Capabilities</a></li>
                 <li><a href="#grant" class="nav-muted">Grant</a></li>
                 <li><a href="demo-interactive.html" class="live-demo-btn" target="_blank">
                     <i class="fas fa-bolt"></i> Live Demo
@@ -526,12 +525,16 @@
         <div class="footer-content">
             <div class="footer-brand">Roya<span style="color:var(--accent-light);">™</span></div>
             <div class="footer-tagline">Elegant Transparency for Swedish Music Publishing</div>
+                        <div style="margin-top: 6px; font-size: 1rem; color: #4a6fa1; font-weight: 500;">
+                            Roya verifies intent and logic, not money.<br>
+                            This separation is central to its safety, scalability, and public value.
+                        </div>
             
             <div class="footer-links">
                 <a href="#index">Home</a>
                 <a href="#demo">Demo</a>
                 <a href="#use-cases">Use Cases</a>
-                <a href="#features">Features</a>
+                <a href="#features">Capabilities</a>
                 <a href="#documentation">Documentation</a>
                 <a href="#grant">Grant & Evaluation</a>
             </div>
@@ -825,115 +828,77 @@
         
         'features': `
             <div class="page-header">
-                <h1 class="page-title">Core Features</h1>
-                <p class="page-lead">
-                    Roya focuses on verification, not value transfer. Each feature is
-                    designed to improve reliability and compliance across existing systems.
-                </p>
+                <h1 class="page-title">CAPABILITIES</h1>
+                <p class="page-lead">What Is Verified</p>
             </div>
 
             <div class="features">
                 <div class="feature">
-                    <h3>Royalty Data Parsing & Normalization</h3>
-                    <p>
-                        Supports ingestion of STIM PDFs and structured files, transforming
-                        complex royalty statements into standardized, machine-readable data.
-                    </p>
+                    <h3>Royalty Metadata Validation</h3>
+                    <p>Roya verifies:</p>
                     <ul>
-                        <li><strong>Multi-format support:</strong> PDF, CSV, Excel, JSON</li>
-                        <li><strong>Automatic data extraction:</strong> Intelligent parsing of complex documents</li>
-                        <li><strong>Data validation:</strong> Check for completeness and consistency</li>
-                        <li><strong>Normalization:</strong> Convert to standardized format</li>
-                        <li><strong>Error reporting:</strong> Detailed feedback on parsing issues</li>
+                        <li>Ownership splits and contributor percentages</li>
+                        <li>Structural correctness of royalty data</li>
+                        <li>Logical consistency (e.g. totals equal 100%)</li>
+                        <li>Industry-aligned reporting formats</li>
                     </ul>
+                    <p><strong>Purpose:</strong> Detect errors before they propagate downstream.</p>
                 </div>
-                
                 <div class="feature">
-                    <h3>Split Verification Engine</h3>
-                    <p>
-                        Validates royalty splits, ownership percentages, and totals before
-                        any payment instruction is generated.
-                    </p>
+                    <h3>Execution Reference Generation</h3>
+                    <p>Once validated, Roya:</p>
                     <ul>
-                        <li><strong>Mathematical validation:</strong> Ensure splits total 100%</li>
-                        <li><strong>Party verification:</strong> Validate rights holder identities</li>
-                        <li><strong>Historical comparison:</strong> Check against previous calculations</li>
-                        <li><strong>Rule-based validation:</strong> Apply custom business rules</li>
-                        <li><strong>Audit logging:</strong> Record all verification steps</li>
+                        <li>Generates immutable execution references</li>
+                        <li>Cryptographically binds royalty logic to a single reference</li>
+                        <li>Records verification proofs on a blockchain testnet</li>
+                        <li>Enables independent inspection and review</li>
                     </ul>
+                    <p><strong>Purpose:</strong> Create a shared, tamper-resistant point of truth.</p>
                 </div>
-                
                 <div class="feature">
-                    <h3>Execution Reference Registry</h3>
-                    <p>
-                        Creates immutable references that document verified royalty logic,
-                        supporting auditability without exposing sensitive banking data.
-                    </p>
+                    <h3>Blockchain-Based Audit Trail</h3>
+                    <p>Roya provides:</p>
                     <ul>
-                        <li><strong>Immutable records:</strong> Tamper-evident verification records</li>
-                        <li><strong>Timestamping:</strong> Precise timing of verification</li>
-                        <li><strong>Reference generation:</strong> Unique IDs for each verification</li>
-                        <li><strong>Access control:</strong> Secure access to verification records</li>
-                        <li><strong>Export capabilities:</strong> Download verification proofs</li>
+                        <li>Timestamped, verifiable records</li>
+                        <li>Explorer-accessible verification references</li>
+                        <li>Independent validation without central trust</li>
+                        <li>Clear separation from financial execution</li>
                     </ul>
+                    <p><strong>Purpose:</strong> Enable trust without controlling funds.</p>
                 </div>
-                
                 <div class="feature">
-                    <h3>Payment Orchestration (No Funds Handling)</h3>
-                    <p>
-                        Outputs structured payment instructions for licensed payment,
-                        banking, or accounting providers.
-                    </p>
+                    <h3>Payment Flow Simulation</h3>
+                    <p>Roya can:</p>
                     <ul>
-                        <li><strong>Format flexibility:</strong> Multiple output formats (JSON, XML, CSV)</li>
-                        <li><strong>Provider compatibility:</strong> Designed for existing payment systems</li>
-                        <li><strong>Security:</strong> No sensitive banking data stored or transmitted</li>
-                        <li><strong>Error handling:</strong> Robust failure recovery</li>
-                        <li><strong>Status tracking:</strong> Monitor instruction delivery status</li>
+                        <li>Generate structured payment instructions</li>
+                        <li>Simulate real-world workflows</li>
+                        <li>Support evaluation by accounting and payment providers</li>
+                        <li>Validate data without executing transfers</li>
                     </ul>
+                    <p><strong>Purpose:</strong> Safe end-to-end testing without regulatory risk.</p>
                 </div>
-            </div>
-            
-            <div class="content-block">
-                <h2>Technical Architecture</h2>
-                <h3>System Design Principles</h3>
-                <p>
-                    Roya is built on several key design principles that ensure security, reliability, and compliance:
-                </p>
-                <ul>
-                    <li><strong>Separation of concerns:</strong> Clear separation between verification and payment execution</li>
-                    <li><strong>Data minimization:</strong> Only process data necessary for verification</li>
-                    <li><strong>Privacy by design:</strong> No storage of sensitive personal or financial data</li>
-                    <li><strong>Auditability:</strong> Complete traceability of all verification steps</li>
-                    <li><strong>Interoperability:</strong> Designed to work with existing systems</li>
-                </ul>
-                
-                <h3>Security Features</h3>
-                <ul>
-                    <li><strong>Encryption:</strong> All data encrypted in transit and at rest</li>
-                    <li><strong>Access controls:</strong> Role-based access to system features</li>
-                    <li><strong>Audit trails:</strong> Complete logging of all system actions</li>
-                    <li><strong>Compliance:</strong> Designed to support regulatory requirements</li>
-                    <li><strong>Regular security testing:</strong> Ongoing vulnerability assessment</li>
-                </ul>
-                
-                <h3>Integration Capabilities</h3>
-                <p>
-                    Roya can integrate with existing systems through multiple methods:
-                </p>
-                <ul>
-                    <li><strong>API integration:</strong> RESTful APIs for system-to-system communication</li>
-                    <li><strong>File-based integration:</strong> Batch processing of royalty files</li>
-                    <li><strong>Web interface:</strong> Manual upload and verification</li>
-                    <li><strong>Webhook support:</strong> Real-time notification of verification status</li>
-                    <li><strong>Export formats:</strong> Multiple output formats for different systems</li>
-                </ul>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#documentation" class="btn-primary">
-                    <i class="fas fa-arrow-right"></i> View Documentation
-                </a>
+                <div class="feature">
+                    <h3>Interoperable System Architecture</h3>
+                    <p>Roya is designed for integration:</p>
+                    <ul>
+                        <li>RESTful APIs</li>
+                        <li>Modular backend services</li>
+                        <li>Clear responsibility boundaries</li>
+                        <li>No platform lock-in</li>
+                    </ul>
+                    <p><strong>Purpose:</strong> Fit into existing ecosystems.</p>
+                </div>
+                <div class="feature">
+                    <h3>Security & Compliance by Design</h3>
+                    <p>Roya is built with:</p>
+                    <ul>
+                        <li>No storage of banking credentials</li>
+                        <li>No handling of funds</li>
+                        <li>GDPR-aligned data minimization</li>
+                        <li>PSD2-aware architectural separation</li>
+                    </ul>
+                    <p><strong>Purpose:</strong> Responsible experimentation and evaluation.</p>
+                </div>
             </div>
         `,
         
