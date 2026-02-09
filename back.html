@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Roya - Sound & Music Protocol Technology | Live Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.7.0/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #0F1B3D;
+            --secondary: #10B981;
+            --accent: #FFD700;
+            --blockchain: #8B5CF6;
+            --light: #F8FAFC;
+            --dark: #0F172A;
+            --gray: #64748B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --radius: 12px;
+            --shadow: 0 10px 25px rgba(15, 27, 61, 0.1);
+            --gradient: linear-gradient(135deg, #0F1B3D 0%, #1E3A8A 100%);
+            --gradient-green: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            --gradient-purple: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .loading-logo {
+            font-size: 48px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .loading-facts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .loading-fact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Demo Container */
+        .container {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%);
+            color: white;
+            padding: 30px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            width: 90px;
+            height: 60px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-text h1 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .logo-text .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .swedish-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .swedish-flag::before {
+            content: '🇸🇪';
+            font-size: 18px;
+        }
+        
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 200px;
+        }
+        
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 10px;
+            transition: all 0.5s ease;
+            font-size: 18px;
+        }
+        
+        .step.active .step-circle {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 184, 212, 0.5);
+        }
+        
+        .step.completed .step-circle {
+            background: var(--success);
+            border-color: var(--success);
+        }
+        
+        .step-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .step.active .step-label {
+            color: white;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .upload-area {
+            border: 3px dashed var(--gray);
+            border-radius: 20px;
+            padding: 60px 40px;
+            background: var(--light);
+            margin-bottom: 40px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(15, 27, 61, 0.05);
+        }
+        
+        .upload-area.drag-over {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 80px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(to right, var(--primary), #0d47a1);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 27, 61, 0.4);
+        }
+        
+        .sample-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .sample-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .file-types {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .file-type-tag {
+            background: white;
+            border: 2px solid var(--gray);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+        
+        .file-type-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Results Sections */
+        .results-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .split-visualization {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .chart-container {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .data-table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        .data-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .data-table tr:hover {
+            background: var(--light);
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 200px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), #0d47a1);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 27, 61, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(to right, var(--success), #00a045);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(to right, var(--accent), #0097a7);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Blockchain Section */
+        .blockchain-info {
+            background: linear-gradient(135deg, #1a1a2e 0%, var(--primary) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .blockchain-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .contract-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        /* Payment Section */
+        .payment-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .summary-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .summary-card.swedish {
+            border-top-color: #006aa8;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+        
+        .summary-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+        
+        .summary-label {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Swedish Features */
+        .swedish-features {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 3px solid #90caf9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #006aa8;
+        }
+        
+        .feature-item h4 {
+            color: #006aa8;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 14px;
+            border-top: 1px solid var(--gray);
+            background: var(--light);
+        }
+        
+        .monad-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-visualization {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+            
+            .progress-steps::before {
+                display: none;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .upload-area {
+                padding: 40px 20px;
+            }
+        }
+        
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+        
+        .visible {
+            display: block !important;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+        
+        .mt-30 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-bolt"></i>
+                <span>Roya</span>
+            </div>
+            <h2>Loading Live Demo</h2>
+            <div class="loading-facts">
+                <div class="loading-fact">
+                    <i class="fas fa-check"></i>
+                    <span>Live on Monad Testnet</span>
+                </div>
+                <div class="loading-fact">
+                    <i class="fas fa-check"></i>
+                    <span>Real Smart Contract Integration</span>
+                </div>
+                <div class="loading-fact">
+                    <i class="fas fa-check"></i>
+                    <span>Swedish Music Industry Focus</span>
+                </div>
+                <div class="loading-fact">
+                    <i class="fas fa-check"></i>
+                    <span>Blockchain-Verified Royalty Splits</span>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <div style="width: 100%; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden;">
+                    <div id="loadingBar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.5s ease;"></div>
+                </div>
+                <p style="margin-top: 10px; opacity: 0.8; font-size: 14px;">Initializing Roya infrastructure...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Demo Container -->
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">Roya</div>
+                    <div class="logo-text">
+                        <h1>Transparency Layer for Swedish Music Publishing</h1>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active" id="step1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Upload & Split</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Blockchain Verification</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Payment Flow</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <!-- Step 1: Upload Section -->
+            <div id="uploadSection" class="upload-section">
+                <h2 class="section-title">Upload Your Split Sheet</h2>
+                <p class="section-subtitle">
+                    Upload a CSV, Excel, or PDF file containing song metadata and royalty splits. 
+                    We'll convert it into an immutable smart contract with Swedish tax compliance.
+                </p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📊</div>
+                    <h3 class="mb-30">Drag & Drop or Click to Upload</h3>
+                    
+                    <div class="file-types">
+                        <div class="file-type-tag active">CSV</div>
+                        <div class="file-type-tag">Excel</div>
+                        <div class="file-type-tag">PDF</div>
+                        <div class="file-type-tag">JSON</div>
+                    </div>
+                    
+                    <button class="upload-btn" id="uploadBtn">
+                        📁 Choose File
+                    </button>
+                    <input type="file" id="fileInput" class="file-input" accept=".csv,.xlsx,.xls,.pdf,.json">
+                    
+                    <div class="mt-30">
+                        <p>Or try with our sample split sheet</p>
+                        <button class="sample-btn" id="sampleBtn">
+                            Try Sample STIM Report
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Swedish Features Preview -->
+                <div class="swedish-features">
+                    <h3 class="text-center mb-30">Live Interactive Demo</h3>
+                    <div class="features-grid">
+                        <div class="feature-item" style="width:100%">
+                            <p>Experience the full Roya verification workflow with our interactive demonstration.</p>
+                            <ul style="margin-top: 1em;">
+                                <li><strong>Upload:</strong> Upload a sample STIM royalty report</li>
+                                <li><strong>Verify:</strong> Watch as Roya validates splits and calculations</li>
+                                <li><strong>Generate:</strong> Create an immutable execution reference</li>
+                                <li><strong>Export:</strong> Generate payment instructions for accounting systems</li>
+                            </ul>
+                            <p style="margin-top: 1em;"><em>Note: This is a testnet demonstration. No real financial transactions occur.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Results & Split Visualization -->
+            <div id="resultsSection" class="results-section">
+                <h2 class="section-title">Royalty Split Analysis</h2>
+                <p class="section-subtitle">
+                    Your STIM report has been parsed. Here's the royalty distribution with Swedish tax calculations.
+                </p>
+                
+                <div class="split-visualization">
+                    <div class="chart-container">
+                        <canvas id="royaltyChart" width="400" height="400"></canvas>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <h3>Distribution Breakdown</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Rights Holder</th>
+                                    <th>ISWC</th>
+                                    <th>Share %</th>
+                                    <th>Amount (SEK)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="royaltyTable">
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="summary-card swedish text-center">
+                    <div class="summary-label">Total Royalties (After 25% Swedish Tax)</div>
+                    <div class="summary-value" id="totalRoyalties">142,567 SEK</div>
+                    <div class="summary-label">Distributed to 8 rights holders</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-accent" id="downloadPdfBtn">
+                        📄 Download PDF Report
+                    </button>
+                    <button class="btn btn-primary" id="proceedToBlockchainBtn">
+                        🔗 Proceed to Blockchain
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Blockchain Verification -->
+            <div id="blockchainSection" class="results-section">
+                <h2 class="section-title">Blockchain Verification</h2>
+                <p class="section-subtitle">
+                    Your royalty split has been converted into a smart contract and deployed to the Monad Testnet.
+                </p>
+                
+                <div class="blockchain-info">
+                    <h3>Smart Contract Deployed</h3>
+                    <p>Your royalty agreement is now immutable and verifiable on the blockchain.</p>
+                    
+                    <div class="contract-details">
+                        <div><strong>Contract Address:</strong> 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4</div>
+                        <div><strong>Chain ID:</strong> 10143 (Monad Testnet)</div>
+                        <div><strong>Transaction Hash:</strong> 0x8a3f92c1d45b7e89a2f3c6d78e45ac9b12f3456d7890a1b2c3d4e5f67890123</div>
+                        <div><strong>Block Number:</strong> 2,345,678</div>
+                        <div><strong>Swedish Tax Rule:</strong> 25% withholding applied</div>
+                    </div>
+                    
+                    <div class="payment-summary">
+                        <div class="summary-card">
+                            <div class="summary-label">Contract Status</div>
+                            <div class="summary-value" style="color: var(--success);">✅ Verified</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Execution Time</div>
+                            <div class="summary-value">2.3s</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-label">Gas Used</div>
+                            <div class="summary-value">187,432</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-accent" id="viewOnExplorerBtn">
+                        🔍 View on Explorer
+                    </button>
+                    <button class="btn btn-primary" id="proceedToPaymentsBtn">
+                        💵 Proceed to Payments
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Payment Processing -->
+            <div id="paymentSection" class="results-section">
+                <h2 class="section-title">Payment Flow</h2>
+                <p class="section-subtitle">
+                    Ready to distribute royalties instantly. Traditional systems take 90+ days.
+                </p>
+                
+                <div class="payment-summary">
+                    <div class="summary-card swedish">
+                        <div class="summary-label">Total to Distribute</div>
+                        <div class="summary-value">142,567 SEK</div>
+                        <div class="summary-label">After Swedish tax withholding</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="summary-label">Rights Holders</div>
+                        <div class="summary-value">8</div>
+                        <div class="summary-label">Will receive payments</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="summary-label">Exchange Rate</div>
+                        <div class="summary-value">10.45</div>
+                        <div class="summary-label">1 USD = X SEK</div>
+                    </div>
+                </div>
+                
+                <div class="data-table-container">
+                    <h3>Payment Distribution</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Recipient</th>
+                                <th>ISWC/IPI</th>
+                                <th>Net Amount (SEK)</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentTable">
+                            <!-- Payment data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="swedish-features mt-30">
+                    <h3 class="text-center mb-30">🇸🇪 Swedish Compliance Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h4>K10 Tax Forms</h4>
+                            <p>Automatically generated for Swedish tax authorities</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>SEK Currency</h4>
+                            <p>Full Swedish Krona support with live exchange rates</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Skatteverket Ready</h4>
+                            <p>Reports formatted for Swedish tax authority submission</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="initiatePaymentsBtn">
+                        💸 Initiate Instant Payments
+                    </button>
+                    <button class="btn btn-accent" id="downloadK10Btn">
+                        📋 Download K10 Tax Forms
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Roya • STIM/NCB Integration • Monad Testnet</p>
+            <div class="monad-status">
+                <div class="status-dot"></div>
+                <span>Connected to Monad Testnet • Chain ID: 10143</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Live Interactive Demo content block removed as requested -->
+
+    <script>
+        // ==================== LOADING SCREEN ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            simulateLoading();
+            initializeDemo();
+        });
+
+        function simulateLoading() {
+            const loadingBar = document.getElementById('loadingBar');
+            const loadingScreen = document.getElementById('loadingScreen');
+            const demoContainer = document.querySelector('.container');
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                loadingBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            demoContainer.style.display = 'block';
+                        }, 500);
+                    }, 500);
+                }
+            }, 200);
+        }
+
+        // ==================== DEMO INITIALIZATION ====================
+        function initializeDemo() {
+            // Sample data for Swedish publishing
+            window.swedishRoyaltyData = [
+                { name: "Erik Svensson", iswc: "T-345.678.123-1", share: 40, amount: 57026.80, tax: 14256.70, net: 42770.10 },
+                { name: "Anna Berg", iswc: "T-987.654.321-2", share: 25, amount: 35641.75, tax: 8910.44, net: 26731.31 },
+                { name: "Lars Johansson", iswc: "T-123.456.789-3", share: 15, amount: 21385.05, tax: 5346.26, net: 16038.79 },
+                { name: "Sofia Andersson", iswc: "T-789.123.456-4", share: 10, amount: 14256.70, tax: 3564.18, net: 10692.53 },
+                { name: "Marcus Nilsson", iswc: "T-456.789.123-5", share: 5, amount: 7128.35, tax: 1782.09, net: 5346.26 },
+                { name: "Emma Karlsson", iswc: "T-234.567.891-6", share: 3, amount: 4277.01, tax: 1069.25, net: 3207.76 },
+                { name: "David Lindgren", iswc: "T-891.234.567-7", share: 1.5, amount: 2138.51, tax: 534.63, net: 1603.88 },
+                { name: "Ida Pettersson", iswc: "T-567.891.234-8", share: 0.5, amount: 712.84, tax: 178.21, net: 534.63 }
+            ];
+
+            // DOM Elements
+            window.steps = document.querySelectorAll('.step');
+            window.sections = {
+                upload: document.getElementById('uploadSection'),
+                results: document.getElementById('resultsSection'),
+                blockchain: document.getElementById('blockchainSection'),
+                payment: document.getElementById('paymentSection')
+            };
+            window.uploadArea = document.getElementById('uploadArea');
+            window.fileInput = document.getElementById('fileInput');
+            window.uploadBtn = document.getElementById('uploadBtn');
+            window.sampleBtn = document.getElementById('sampleBtn');
+            window.royaltyChart = null;
+
+            // Set up event listeners
+            uploadBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevents the event from bubbling up
+                fileInput.click();
+            });
+            sampleBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent bubbling to upload area
+                loadSampleData();
+            });
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('drag-over');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('drag-over');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+                if (e.dataTransfer.files.length) {
+                    processUpload(e.dataTransfer.files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length) {
+                    processUpload(e.target.files[0]);
+                }
+            });
+            
+            // Set up button event listeners
+            document.getElementById('proceedToBlockchainBtn')?.addEventListener('click', proceedToBlockchain);
+            document.getElementById('proceedToPaymentsBtn')?.addEventListener('click', proceedToPayments);
+            document.getElementById('initiatePaymentsBtn')?.addEventListener('click', initiatePayments);
+            document.getElementById('downloadPdfBtn')?.addEventListener('click', downloadPdf);
+            document.getElementById('downloadK10Btn')?.addEventListener('click', downloadK10Forms);
+            document.getElementById('viewOnExplorerBtn')?.addEventListener('click', viewOnExplorer);
+            
+            // Initialize Web3 if available
+            if (typeof window.ethereum !== 'undefined') {
+                window.web3 = new Web3(window.ethereum);
+                console.log('🔗 Web3 detected');
+            }
+        }
+
+        // ==================== FILE HANDLING ====================
+        function processUpload(file) {
+            const fileName = file.name;
+            const fileSize = (file.size / 1024).toFixed(2); // KB
+            
+            // Show uploading state
+            uploadArea.innerHTML = `
+                <div class="upload-icon">⏳</div>
+                <h3 class="mb-30">Processing ${fileName}</h3>
+                <p>${fileSize} KB • Parsing STIM/NCB data...</p>
+                <div class="mt-30">
+                    <div style="width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden;">
+                        <div id="progressBar" style="width: 0%; height: 100%; background: linear-gradient(to right, var(--primary), #0d47a1); transition: width 2s;"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Simulate progress
+            const progressBar = document.getElementById('progressBar');
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 20;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        // Show results
+                        showResults();
+                    }, 500);
+                }
+            }, 400);
+        }
+        
+        // Load sample data
+        function loadSampleData() {
+            uploadArea.innerHTML = `
+                <div class="upload-icon">🇸🇪</div>
+                <h3 class="mb-30">Loading Sample STIM Report</h3>
+                <p>Simulating Swedish publishing royalty data...</p>
+                <div class="mt-30">
+                    <div style="width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden;">
+                        <div id="sampleProgress" style="width: 0%; height: 100%; background: linear-gradient(to right, #006aa8, var(--accent)); transition: width 1.5s;"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Simulate loading
+            const progressBar = document.getElementById('sampleProgress');
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 25;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        showResults();
+                    }, 500);
+                }
+            }, 300);
+        }
+        
+        // Show results section
+        function showResults() {
+            // Update steps
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+            
+            // Hide upload, show results
+            sections.upload.classList.add('hidden');
+            sections.results.classList.remove('hidden');
+            sections.results.classList.add('visible');
+            
+            // Populate data
+            populateRoyaltyTable();
+            createRoyaltyChart();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Proceed to blockchain
+        function proceedToBlockchain() {
+            // Update steps
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+            
+            // Hide results, show blockchain
+            sections.results.classList.add('hidden');
+            sections.blockchain.classList.remove('hidden');
+            sections.blockchain.classList.add('visible');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Proceed to payments
+        function proceedToPayments() {
+            // Update steps
+            steps[2].classList.add('completed');
+            
+            // Hide blockchain, show payments
+            sections.blockchain.classList.add('hidden');
+            sections.payment.classList.remove('hidden');
+            sections.payment.classList.add('visible');
+            
+            // Populate payment table
+            populatePaymentTable();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initiate payments
+        function initiatePayments() {
+            if (confirm('Initiate instant payments of 142,567 SEK to 8 rights holders?\n\nPayments will be processed within 0-2 days (vs 90+ days traditional).')) {
+                alert('✅ Payments Initiated!\n\n142,567 SEK is being distributed to 8 rights holders.\n\n• All transactions are on-chain\n• K10 tax forms generated\n• Swedish tax compliance verified\n\nPayments complete in 2-5 minutes.');
+            }
+        }
+        
+        // Download PDF report
+        function downloadPdf() {
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+
+                // Add Swedish flag header
+                doc.setFillColor(0, 106, 168); // Swedish blue
+                doc.rect(0, 0, 210, 40, 'F');
+                doc.setFillColor(255, 204, 0); // Swedish yellow
+                doc.rect(0, 15, 210, 10, 'F');
+
+                // Add title with Swedish styling
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(28);
+                doc.setFont('helvetica', 'bold');
+                doc.text('IMMUTABLE ROYALTY SPLIT REPORT', 105, 25, { align: 'center' });
+
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                doc.text('Roya • STIM/NCB Integration', 105, 32, { align: 'center' });
+
+                // Add execution reference box
+                doc.setFillColor(245, 247, 250);
+                doc.roundedRect(20, 45, 170, 20, 3, 3, 'F');
+                doc.setTextColor(26, 35, 126);
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'bold');
+                doc.text('EXECUTION REFERENCE:', 25, 55);
+                doc.setFont('helvetica', 'normal');
+                doc.text('REF-Roya-2026-001', 70, 55);
+
+                doc.setFontSize(9);
+                doc.setTextColor(96, 125, 139);
+                doc.text(`Generated: ${new Date().toLocaleDateString('sv-SE')} ${new Date().toLocaleTimeString('sv-SE')}`, 25, 62);
+                doc.text(`Blockchain: Monad Testnet • Chain ID: 10143`, 105, 62, { align: 'center' });
+
+                // Royalty Summary Section
+                doc.setTextColor(26, 35, 126);
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'bold');
+                doc.text('ROYALTY DISTRIBUTION SUMMARY', 20, 80);
+
+                doc.setDrawColor(92, 107, 192);
+                doc.setLineWidth(0.5);
+                doc.line(20, 82, 190, 82);
+
+                // Summary boxes (example values, replace with real data if available)
+                const totalRoyalties = swedishRoyaltyData.reduce((sum, item) => sum + (item.amount || 0), 0);
+                const totalNet = swedishRoyaltyData.reduce((sum, item) => sum + (item.net || 0), 0);
+                const totalTax = totalRoyalties - totalNet;
+                const summaryData = [
+                    { label: 'TOTAL ROYALTIES', value: totalRoyalties.toLocaleString('sv-SE') + ' SEK', y: 95 },
+                    { label: 'SWEDISH TAX (25%)', value: totalTax.toLocaleString('sv-SE') + ' SEK', y: 110 },
+                    { label: 'NET DISTRIBUTION', value: totalNet.toLocaleString('sv-SE') + ' SEK', y: 125 },
+                    { label: 'RIGHTS HOLDERS', value: swedishRoyaltyData.length.toString(), y: 140 }
+                ];
+                summaryData.forEach((item, index) => {
+                    const x = 20 + (index % 2) * 85;
+                    const y = item.y;
+                    doc.setFillColor(232, 234, 246);
+                    doc.roundedRect(x, y, 80, 20, 3, 3, 'F');
+                    doc.setTextColor(26, 35, 126);
+                    doc.setFontSize(10);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(item.label, x + 5, y + 8);
+                    doc.setFontSize(14);
+                    doc.text(item.value, x + 5, y + 15);
+                });
+
+                // Royalty Split Table
+                doc.setTextColor(26, 35, 126);
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'bold');
+                doc.text('ROYALTY SPLIT DETAILS', 20, 165);
+                doc.setDrawColor(92, 107, 192);
+                doc.line(20, 167, 190, 167);
+
+                // Create table headers
+                doc.setFillColor(26, 35, 126);
+                doc.rect(20, 170, 170, 10, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'bold');
+                const headers = ['NAME', 'ISWC', 'SHARE %', 'AMOUNT (SEK)', 'NET (SEK)'];
+                const colWidths = [40, 40, 20, 35, 35];
+                let currentX = 22;
+                headers.forEach((header, i) => {
+                    doc.text(header, currentX, 177);
+                    currentX += colWidths[i];
+                });
+
+                // Table rows
+                let currentY = 185;
+                swedishRoyaltyData.forEach((item, index) => {
+                    // Alternate row colors
+                    if (index % 2 === 0) {
+                        doc.setFillColor(248, 249, 255);
+                        doc.rect(20, currentY - 4, 170, 8, 'F');
+                    }
+                    doc.setTextColor(0, 0, 0);
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item.name.substring(0, 20), 22, currentY);
+                    doc.text(item.iswc, 62, currentY);
+                    doc.text(`${item.share}%`, 102, currentY);
+                    doc.text(item.amount.toLocaleString('sv-SE'), 137, currentY);
+                    doc.text(item.net.toLocaleString('sv-SE'), 172, currentY);
+                    currentY += 8;
+                });
+
+                // Swedish Tax Compliance Section
+                doc.setTextColor(26, 35, 126);
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'bold');
+                doc.text('SWEDISH TAX COMPLIANCE', 20, currentY + 15);
+                doc.setDrawColor(92, 107, 192);
+                doc.line(20, currentY + 17, 190, currentY + 17);
+                const complianceItems = [
+                    '✓ K10 Tax Forms: Automatically generated for Skatteverket',
+                    '✓ 25% Withholding: Swedish tax rate applied to all distributions',
+                    '✓ SEK Currency: All amounts in Swedish Krona',
+                    '✓ STIM Integration: Direct CSV export/import compatibility',
+                    '✓ NCB Mechanical: Swedish publishing rates applied',
+                    '✓ ISWC Validation: Swedish PRO codes verified'
+                ];
+                complianceItems.forEach((item, index) => {
+                    doc.setTextColor(0, 106, 168);
+                    doc.setFontSize(10);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item, 25, currentY + 30 + (index * 6));
+                });
+
+                // Blockchain Verification Section
+                doc.setTextColor(26, 35, 126);
+                doc.setFontSize(16);
+                doc.setFont('helvetica', 'bold');
+                doc.text('BLOCKCHAIN VERIFICATION', 20, currentY + 75);
+                doc.setDrawColor(92, 107, 192);
+                doc.line(20, currentY + 77, 190, currentY + 77);
+                doc.setTextColor(0, 0, 0);
+                doc.setFontSize(9);
+                doc.setFont('helvetica', 'normal');
+                const blockchainInfo = [
+                    `Contract Address: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4`,
+                    `Transaction Hash: 0x1234567890abcdef...`,
+                    `Block Number: 2,345,678 • Chain ID: 10143 (Monad Testnet)`,
+                    `Verification Timestamp: ${new Date().toISOString()}`,
+                    `Smart Contract Status: Verified and Immutable`
+                ];
+                blockchainInfo.forEach((item, index) => {
+                    doc.text(item, 25, currentY + 90 + (index * 5));
+                });
+
+                // Add footer with Swedish flag
+                doc.setFillColor(0, 106, 168);
+                doc.rect(0, 280, 210, 20, 'F');
+                doc.setFillColor(255, 204, 0);
+                doc.rect(0, 285, 210, 10, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(8);
+                doc.setFont('helvetica', 'normal');
+                doc.text('© 2026 Roya • STIM/NCB Integration • This is an immutable blockchain record', 105, 295, { align: 'center' });
+                // Add page number
+                doc.setFontSize(8);
+                doc.setTextColor(150, 150, 150);
+                doc.text('Page 1 of 1', 195, 295, { align: 'right' });
+                // Save the PDF
+                const fileName = `Immutable-Royalty-Report-Roya.pdf`;
+                doc.save(fileName);
+                // Show success message
+                alert('✅ Professional PDF Report Generated!\n\n' + fileName + ' has been downloaded.');
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('❌ PDF Generation Failed. There was an error generating the PDF report. Please try again.');
+            }
+        }
+        
+        // Download K10 forms
+        function downloadK10Forms() {
+            alert('📋 Downloading K10 Tax Forms...\n\n8 K10 forms have been generated for Swedish tax authority (Skatteverket) submission.\n\nForms include:\n• 25% tax withholding calculations\n• SEK currency amounts\n• ISWC/IPI identification\n• Swedish tax ID validation');
+        }
+        
+        // View on blockchain explorer
+        function viewOnExplorer() {
+            alert('🔍 Opening Blockchain Explorer...\n\nContract Address: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4\n\nYou can now verify:\n• Smart contract code\n• Transaction history\n• Swedish tax rules encoded\n• Royalty distribution logic');
+        }
+        
+        // Populate royalty table
+        function populateRoyaltyTable() {
+            const table = document.getElementById('royaltyTable');
+            table.innerHTML = '';
+            
+            swedishRoyaltyData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.iswc}</td>
+                    <td>${item.share}%</td>
+                    <td>${item.amount.toLocaleString('sv-SE')} SEK</td>
+                `;
+                table.appendChild(row);
+            });
+        }
+        
+        // Populate payment table
+        function populatePaymentTable() {
+            const table = document.getElementById('paymentTable');
+            table.innerHTML = '';
+            
+            const methods = ['Bankgiro', 'Swish', 'SEB', 'Nordea'];
+            const statuses = ['✅ Ready', '⏳ Pending', '✅ Ready', '✅ Ready', '✅ Ready', '✅ Ready', '⏳ Pending', '✅ Ready'];
+            
+            swedishRoyaltyData.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.iswc}</td>
+                    <td>${item.net.toLocaleString('sv-SE')} SEK</td>
+                    <td>${methods[index % methods.length]}</td>
+                    <td>${statuses[index]}</td>
+                `;
+                table.appendChild(row);
+            });
+        }
+        
+        // Create royalty chart
+        function createRoyaltyChart() {
+            const ctx = document.getElementById('royaltyChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (royaltyChart) {
+                royaltyChart.destroy();
+            }
+            
+            const colors = [
+                '#1a237e', '#5c6bc0', '#3949ab', '#303f9f',
+                '#283593', '#1565c0', '#0d47a1', '#006aa8'
+            ];
+            
+            royaltyChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: swedishRoyaltyData.map(item => item.name),
+                    datasets: [{
+                        data: swedishRoyaltyData.map(item => item.share),
+                        backgroundColor: colors,
+                        borderWidth: 2,
+                        borderColor: 'white'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Royalty Distribution %',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const index = context.dataIndex;
+                                    const amount = swedishRoyaltyData[index].amount.toLocaleString('sv-SE');
+                                    const net = swedishRoyaltyData[index].net.toLocaleString('sv-SE');
+                                    return [
+                                        `${context.label}: ${context.raw}%`,
+                                        `Gross: ${amount} SEK`,
+                                        `Net (after tax): ${net} SEK`
+                                    ];
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

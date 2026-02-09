@@ -3,100 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound Protocol - Transparency Layer for Swedish Music Publishing</title>
+    <title>Roya — Transparency Layer for Swedish Music Publishing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        
+
         :root {
-            --primary: #1a237e;          /* Swedish dark blue */
-            --secondary: #0d47a1;        /* Medium blue */
-            --swedish-blue: #006aa8;     /* Swedish flag blue */
-            --swedish-yellow: #ffcc00;   /* Swedish flag yellow */
-            --accent: #00b8d4;           /* Teal accent */
-            --light: #f5f7fa;            /* Light background */
-            --gray: #607d8b;             /* Gray text */
+            --primary: #1a237e;
+            --secondary: #283593;
+            --accent: #00b8d4;
+            --accent-light: #80deea;
+            --royal-blue: #1565c0;
+            --swedish-blue: #006aa8;
+            --swedish-yellow: #ffcc00;
+            --light: #f5f7fa;
+            --gray: #607d8b;
+            --light-gray: #eceff1;
             --white: #ffffff;
-            --success: #00c853;
-            --warning: #ff9100;
-            --shadow: 0 10px 30px rgba(26, 35, 126, 0.15);
+            --shadow: 0 10px 30px rgba(26, 35, 126, 0.1);
+            --glow: 0 0 20px rgba(0, 184, 212, 0.2);
         }
-        
+
         body {
             background-color: var(--light);
             color: #263238;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Header & Navigation */
+
+        /* HEADER */
         header {
-            padding: 20px 0;
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(26, 35, 126, 0.1);
+            padding: 22px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(26, 35, 126, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            gap: 14px;
         }
-        
-        .logo i {
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--royal-blue), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--white);
+            box-shadow: var(--glow);
+        }
+
+        .logo-text {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--royal-blue), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .trademark {
+            font-size: 0.7rem;
+            vertical-align: super;
+            color: var(--accent);
+            margin-left: 2px;
+        }
+
+        .status-badge {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
             color: var(--swedish-blue);
-            font-size: 2rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 15px;
+            border: 1px solid rgba(0,106,168,0.2);
+            box-shadow: 0 2px 8px rgba(0,106,168,0.1);
         }
-        
-        .logo .tagline {
-            font-size: 0.9rem;
-            color: var(--swedish-blue);
-            font-weight: 500;
-            margin-left: 10px;
-            padding-left: 10px;
-            border-left: 2px solid var(--swedish-yellow);
-        }
-        
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 28px;
+            align-items: center;
         }
-        
+
         nav a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
-            padding: 8px 0;
+            font-size: 0.95rem;
             position: relative;
+            padding: 5px 0;
         }
-        
-        nav a:hover {
-            color: var(--swedish-blue);
-        }
-        
+
         nav a::after {
             content: '';
             position: absolute;
@@ -104,832 +133,1107 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--swedish-blue);
+            background: linear-gradient(90deg, var(--accent), var(--swedish-blue));
             transition: width 0.3s;
         }
-        
+
         nav a:hover::after {
             width: 100%;
         }
-        
-        .cta-button {
-            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: 30px;
+
+        nav a:hover {
+            color: var(--royal-blue);
+        }
+
+        .nav-muted {
+            font-size: 0.85rem;
+            color: var(--gray);
+            border-left: 1px solid #e0e0e0;
+            padding-left: 15px;
+        }
+
+        .live-demo-btn {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
-            border: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            animation: pulse 2s infinite;
         }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            background: linear-gradient(135deg, var(--primary), var(--swedish-blue));
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
-        
-        /* Hero Section - Ecosystem Focus */
-        .hero {
-            padding: 100px 0;
+
+        /* MAIN CONTENT */
+        .page-content {
+            padding: 80px 0;
+            min-height: 60vh;
+        }
+
+        .page-header {
             text-align: center;
-            background: linear-gradient(135deg, var(--light) 0%, #e8eaf6 100%);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 60px;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 106, 168, 0.1) 0%, rgba(0, 106, 168, 0) 70%);
-            top: -300px;
-            right: -200px;
-        }
-        
-        .ecosystem-badge {
-            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
-            color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 106, 168, 0.2);
-        }
-        
-        .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .page-title {
+            font-size: 2.8rem;
             color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 800;
         }
-        
-        .hero-highlight {
-            color: var(--swedish-blue);
-            background: linear-gradient(120deg, rgba(0, 106, 168, 0.1) 0%, rgba(0, 106, 168, 0) 100%);
-            padding: 0 5px;
-            border-radius: 4px;
-            font-weight: 700;
-        }
-        
-        .hero p {
+
+        .page-lead {
             font-size: 1.3rem;
             color: var(--gray);
             max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            margin: 0 auto;
+            line-height: 1.7;
         }
-        
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
-            color: var(--white);
-            padding: 18px 36px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-            border: none;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 20px rgba(0, 106, 168, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 106, 168, 0.4);
-            background: linear-gradient(135deg, var(--primary), var(--swedish-blue));
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            padding: 18px 36px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-            border: 2px solid var(--swedish-blue);
-            font-size: 1.1rem;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(0, 106, 168, 0.05);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 106, 168, 0.1);
-        }
-        
-        /* Key Understanding Section - CRITICAL */
-        .ecosystem-explanation {
-            padding: 80px 0;
-            background: var(--white);
-        }
-        
-        .explanation-box {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border: 3px solid var(--swedish-blue);
-            border-radius: 20px;
-            padding: 50px;
-            margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .explanation-box::before {
-            content: '⚡';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.1;
-        }
-        
-        .key-point {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .key-point-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .key-point-content h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .ecosystem-diagram {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin: 50px 0;
-            flex-wrap: wrap;
-        }
-        
-        .ecosystem-item {
-            text-align: center;
-            width: 150px;
-        }
-        
-        .ecosystem-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--white);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 2rem;
-            color: var(--primary);
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-        
-        .ecosystem-item:hover .ecosystem-icon {
-            transform: scale(1.1);
-            border-color: var(--swedish-blue);
-            box-shadow: var(--shadow);
-        }
-        
-        /* STIM Statement Importer Section */
-        .statement-importer {
-            padding: 80px 0;
-            background: var(--light);
-        }
-        
-        .importer-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .importer-content h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .importer-content p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        
-        .data-fields {
+
+        /* CONTENT BLOCKS */
+        .content-block {
             background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-left: 5px solid var(--swedish-blue);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
         }
-        
-        .data-fields h4 {
+
+        .content-block h2 {
             color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+        }
+
+        .content-block h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        .content-block p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .content-block ul, .content-block ol {
+            margin: 15px 0 15px 20px;
+            color: var(--gray);
+        }
+
+        .content-block li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        /* NOTICE BOXES */
+        .notice-box {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-left: 4px solid var(--swedish-yellow);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .notice-box strong {
+            color: #5d4037;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .note {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .note strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* DEMO STEPS */
+        .demo-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .demo-step {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--swedish-blue));
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
             margin-bottom: 15px;
         }
-        
-        .field-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .field-item {
-            padding: 10px;
-            background: rgba(0, 106, 168, 0.05);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .field-item strong {
-            color: var(--swedish-blue);
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        /* Built for Modern Publisher Section */
-        .modern-publisher {
-            padding: 80px 0;
-            background: var(--white);
-        }
-        
-        .publisher-features {
+
+        /* USE CASES & FEATURES */
+        .use-cases, .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin: 40px 0;
         }
-        
-        .publisher-feature {
-            background: var(--white);
+
+        .use-case, .feature {
+            background: white;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            border: 2px solid transparent;
-            transition: all 0.3s;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
         }
-        
-        .publisher-feature:hover {
-            transform: translateY(-10px);
-            border-color: var(--swedish-blue);
-            box-shadow: 0 15px 30px rgba(0, 106, 168, 0.15);
-        }
-        
-        .feature-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .publisher-feature h3 {
+
+        .use-case h3, .feature h3 {
             color: var(--primary);
             margin-bottom: 15px;
             font-size: 1.4rem;
         }
-        
-        .pro-tip {
-            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-            border: 2px solid var(--swedish-yellow);
-            border-radius: 15px;
+
+        .use-case ul, .feature ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .use-case li, .feature li {
+            margin-bottom: 8px;
+            color: var(--gray);
+        }
+
+        /* DOCUMENTATION */
+        .doc-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .doc-section {
+            background: white;
             padding: 30px;
-            margin-top: 50px;
-            position: relative;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
         }
-        
-        .pro-tip::before {
-            content: '💡 Pro Tip';
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            background: var(--swedish-yellow);
+
+        .doc-section h3 {
             color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
-        
-        /* Footer */
+
+        /* BUTTONS */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--swedish-blue), var(--accent));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,106,168,0.3);
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,106,168,0.4);
+        }
+
+        /* HR */
+        hr {
+            border: none;
+            height: 1px;
+            background: var(--light-gray);
+            margin: 40px 0;
+        }
+
+        /* FOOTER */
         footer {
             padding: 60px 0 40px;
             background: var(--primary);
             color: white;
+            margin-top: 80px;
         }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h4 {
-            color: var(--swedish-yellow);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+
+        footer a {
+            color: #bbdefb;
             text-decoration: none;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
-        
-        .footer-links a:hover {
-            color: var(--swedish-yellow);
+
+        footer a:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
         }
-        
-        .org-logos {
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .footer-tagline {
+            color: #bbdefb;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin: 40px 0;
+            gap: 30px;
+            margin-top: 20px;
             flex-wrap: wrap;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        
-        .org-logo {
-            height: 50px;
-            opacity: 0.8;
-            transition: opacity 0.3s, transform 0.3s;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .importer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-        
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
+            .page-title {
+                font-size: 2.2rem;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-            
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
+            .page-lead {
                 font-size: 1.1rem;
             }
             
-            .hero-buttons {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
             
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
+            .status-badge {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
                 justify-content: center;
             }
             
-            .explanation-box {
-                padding: 30px;
+            .nav-muted {
+                border-left: none;
+                padding-left: 0;
             }
             
-            .ecosystem-diagram {
-                gap: 20px;
+            .demo-flow, .use-cases, .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .content-block {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-content {
+                padding: 50px 0;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .use-case, .feature, .demo-step, .doc-section {
+                padding: 20px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-wave-square"></i>
-                    <span>Sound Protocol</span>
-                    <a href="modern-publisher.html" class="tagline" style="text-decoration:underline; color:var(--swedish-blue); cursor:pointer;">Transparency Layer for Swedish Publishing</a>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="features.html">Features</a></li>
-                        <li><a href="solutions.html">Solutions</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="demo.html">Live Demo</a></li>
-                    </ul>
-                </nav>
-                <a href="get-started.html" class="cta-button">
-                    <i class="fas fa-rocket"></i> Get Started
-                </a>
-        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="ecosystem-badge">
-                🇸🇪 Transparency Layer for STIM & NCB Ecosystem
-            </div>
-            <h1>
-                The <span class="hero-highlight">"Last Mile"</span> Solution for Swedish Music Publishing
-            </h1>
-            <p>
-                Sound Protocol doesn't replace STIM, NCB, or DSPs. We provide the transparency layer 
-                <span class="hero-highlight">after</span> collection societies complete their work — automating the final distribution between collaborators 
-                with blockchain verification and instant SEK payments.
-            </p>
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <div class="logo-icon">R</div>
+            <div class="logo-text">Roya<span class="trademark">™</span></div>
+            <span class="status-badge">Testnet Prototype · Grant Evaluation Phase</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#index">Home</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#grant" class="nav-muted">Grant</a></li>
+                <li><a href="demo-interactive.html" class="live-demo-btn" target="_blank">
+                    <i class="fas fa-bolt"></i> Live Demo
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="page-content" class="container page-content">
+    <!-- Content loaded dynamically -->
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">Roya<span style="color:var(--accent-light);">™</span></div>
+            <div class="footer-tagline">Elegant Transparency for Swedish Music Publishing</div>
             
-            <div class="hero-buttons">
-                <a href="show.html" class="btn-primary">
-                    <i class="fas fa-play-circle"></i> Try STIM Import Demo
-                </a>
-                <a href="#ecosystem" class="btn-secondary">
-                    <i class="fas fa-info-circle"></i> How It Works with STIM
-                </a>
+            <div class="footer-links">
+                <a href="#index">Home</a>
+                <a href="#demo">Demo</a>
+                <a href="#use-cases">Use Cases</a>
+                <a href="#features">Features</a>
+                <a href="#documentation">Documentation</a>
+                <a href="#grant">Grant & Evaluation</a>
+            </div>
+            
+            <div style="margin-top: 30px; font-size: 0.85rem; color: #90a4ae;">
+                © 2025 Roya™. All rights reserved. Roya is a testnet prototype for evaluation purposes.
             </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Key Understanding Section - CRITICAL -->
-    <section class="ecosystem-explanation" id="ecosystem">
-        <div class="container">
-            <div class="explanation-box">
-                <h2 style="color: var(--primary); margin-bottom: 30px; font-size: 2.2rem;">
-                    ⚡ Key Understanding: How SMPT Fits Into the Swedish Ecosystem
-                </h2>
-                
-                <div class="key-point">
-                    <div class="key-point-icon">
-                        <i class="fas fa-times-circle"></i>
-                    </div>
-                    <div class="key-point-content">
-                        <h3>What SMPT Does NOT Do</h3>
-                        <p style="font-size: 1.1rem; color: var(--dark);">
-                            <strong>SMPT does NOT replace STIM, NCB, international PROs, or DSPs (Spotify, Apple Music, YouTube).</strong><br>
-                            We work <em>after</em> these organizations complete their collection, matching, and payout processes.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="key-point">
-                    <div class="key-point-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div class="key-point-content">
-                        <h3>Our Focus: The "Last Mile" of Royalty Distribution</h3>
-                        <p style="font-size: 1.1rem; color: var(--dark);">
-                            SMPT focuses on the part that happens <strong>between collaborators</strong> after official STIM/NCB payouts have been made to publishers.
-                            We add transparency and automation to the final distribution to songwriters, producers, and other rights holders.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="ecosystem-diagram">
-                    <div class="ecosystem-item">
-                        <div class="ecosystem-icon">🎵</div>
-                        <div>Music Streamed on DSPs</div>
-                    </div>
-                    <div class="ecosystem-item">
-                        <div class="ecosystem-icon">🏛️</div>
-                        <div>STIM/NCB Collect</div>
-                    </div>
-                    <div class="ecosystem-item">
-                        <div class="ecosystem-icon">📊</div>
-                        <div>Payout to Publishers</div>
-                    </div>
-                    <div class="ecosystem-item" style="color: var(--swedish-blue); font-weight: 600;">
-                        <div class="ecosystem-icon" style="border-color: var(--swedish-blue); color: var(--swedish-blue);">⚡</div>
-                        <div>SMPT: Transparent Distribution</div>
-                    </div>
-                    <div class="ecosystem-item">
-                        <div class="ecosystem-icon">👥</div>
-                        <div>Collaborators Paid</div>
-                    </div>
-                </div>
+<script>
+    // Page content definitions
+    const pageContent = {
+        'index': `
+            <div class="page-header">
+                <h1 class="page-title">Roya — Transparency Layer for Swedish Music Publishing</h1>
+                <p class="page-lead">
+                    Roya introduces an elegant verification layer that allows creators, publishers, 
+                    and administrators to review and confirm royalty logic prior to collection and distribution.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- STIM Statement Importer Section -->
-    <section class="statement-importer">
-        <div class="container">
-            <div class="importer-container">
-                <div class="importer-content">
-                    <h2>STIM Statement Importer</h2>
-                    <p>
-                        A Royalty Statement (or Payout Report) is a critical document for publishers. 
-                        Our tool imports these files directly from the STIM "My Pages" portal.
-                    </p>
-                    
-                    <div class="data-fields">
-                        <h4>Key Data Fields Imported:</h4>
-                        <div class="field-list">
-                            <div class="field-item">
-                                <strong>Work ID/STIM ID</strong>
-                                Swedish PRO identification
-                            </div>
-                            <div class="field-item">
-                                <strong>ISWC</strong>
-                                International work code
-                            </div>
-                            <div class="field-item">
-                                <strong>Title</strong>
-                                Song/work title
-                            </div>
-                            <div class="field-item">
-                                <strong>Writer(s)</strong>
-                                Creator information
-                            </div>
-                            <div class="field-item">
-                                <strong>Usage Type</strong>
-                                Live, Radio/TV, Streaming, Mechanicals
-                            </div>
-                            <div class="field-item">
-                                <strong>Territory</strong>
-                                Usage territory
-                            </div>
-                            <div class="field-item">
-                                <strong>Share %</strong>
-                                Publisher share
-                            </div>
-                            <div class="field-item">
-                                <strong>Net Amount</strong>
-                                SEK payment amount
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p>
-                        <strong>Why this matters:</strong> Publishers spend hours manually entering this data into accounting software. 
-                        If SMPT can upload a STIM Excel file, match ISWC codes to the publisher's catalog, and calculate splits, 
-                        it becomes essential for publishing companies.
-                    </p>
-                    
-                    <a href="show.html" class="btn-primary" style="margin-top: 30px;">
-                        <i class="fas fa-upload"></i> Try STIM CSV Import Demo
+            <div class="content-block">
+                <h2>What is Roya?</h2>
+                <p>
+                    Roya is a testnet prototype designed to improve transparency, auditability, and trust 
+                    in Swedish music royalty workflows. It verifies metadata, royalty splits, and distribution 
+                    logic before they reach downstream royalty systems.
+                </p>
+                
+                <div class="notice-box">
+                    <strong>Testnet & Evaluation Notice</strong><br>
+                    This prototype runs in a controlled test environment. All data and execution 
+                    references are simulated for research and evaluation purposes. No real financial 
+                    transactions are initiated.
+                </div>
+                
+                <div style="display: flex; gap: 20px; margin-top: 40px; flex-wrap: wrap;">
+                    <a href="#demo" class="btn-primary">
+                        <i class="fas fa-play-circle"></i> View Prototype Demo
+                    </a>
+                    <a href="#grant" class="btn-primary" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">
+                        <i class="fas fa-file-alt"></i> Grant & Evaluation
                     </a>
                 </div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Quick Access</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <a href="#demo" style="display: block; padding: 20px; background: var(--light-gray); border-radius: 12px; text-decoration: none; color: var(--primary);">
+                        <i class="fas fa-desktop" style="color: var(--accent); margin-bottom: 10px; font-size: 1.5rem;"></i>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Interactive Demo</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray);">Experience the verification workflow</p>
+                    </a>
+                    <a href="#use-cases" style="display: block; padding: 20px; background: var(--light-gray); border-radius: 12px; text-decoration: none; color: var(--primary);">
+                        <i class="fas fa-users" style="color: var(--accent); margin-bottom: 10px; font-size: 1.5rem;"></i>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Use Cases</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray);">See how different stakeholders benefit</p>
+                    </a>
+                    <a href="#documentation" style="display: block; padding: 20px; background: var(--light-gray); border-radius: 12px; text-decoration: none; color: var(--primary);">
+                        <i class="fas fa-book" style="color: var(--accent); margin-bottom: 10px; font-size: 1.5rem;"></i>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Documentation</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray);">Technical and evaluation resources</p>
+                    </a>
+                </div>
+            </div>
+        `,
+        
+        'demo': `
+            <div class="page-header">
+                <h1 class="page-title">Roya Interactive Demonstration</h1>
+                <p class="page-lead">
+                    This demonstration shows how royalty data can be ingested, verified,
+                    and prepared for payment execution without Roya handling funds.
+                </p>
+            </div>
+
+            <div class="notice-box">
+                <strong>Testnet & Evaluation Notice</strong><br>
+                This demo runs in a controlled test environment. All data, execution
+                references, and payment steps are simulated for research and evaluation
+                purposes. No real financial transactions are initiated.
+            </div>
+
+            <div class="demo-flow">
+                <div class="demo-step">
+                    <div class="step-number">1</div>
+                    <h3>Rights Data Ingestion</h3>
+                    <p>
+                        Upload royalty documentation (STIM PDF, CSV, or spreadsheet)
+                        to demonstrate how publishing data can be parsed and normalized.
+                    </p>
+                    <div style="margin-top: 15px; padding: 10px; background: var(--light-gray); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Supported formats:</strong> STIM statements, CSV exports, Excel spreadsheets
+                    </div>
+                </div>
                 
-                <div class="importer-visual">
-                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: var(--shadow); border: 2px solid var(--swedish-blue);">
-                        <div style="background: #f8f9ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <div style="width: 40px; height: 40px; background: var(--swedish-blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">
-                                    <i class="fas fa-file-excel"></i>
-                                </div>
-                                <div>
-                                    <strong>STIM_Report_2026_Q1.xlsx</strong><br>
-                                    <small style="color: var(--gray);">Downloaded from STIM "My Pages"</small>
-                                </div>
-                            </div>
-                            <div style="background: white; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9rem;">
-                                <div style="color: var(--success);">✓ Detected: STIM CSV Format</div>
-                                <div style="color: var(--success); margin-top: 10px;">✓ 142,567 SEK in royalties</div>
-                                <div style="color: var(--success); margin-top: 10px;">✓ 8 rights holders identified</div>
-                                <div style="color: var(--accent); margin-top: 10px;">⏳ Calculating splits...</div>
-                            </div>
-                        </div>
-                        
-                        <div style="color: var(--gray); font-size: 0.9rem; line-height: 1.6;">
-                            <strong>Supported Formats:</strong> CSV, Excel, TXT from STIM portal<br>
-                            <strong>Large Publishers:</strong> CRD or CWR standards<br>
-                            <strong>Visual Layout:</strong> Summary page + line-by-line breakdown
-                        </div>
+                <div class="demo-step">
+                    <div class="step-number">2</div>
+                    <h3>Royalty Logic Verification</h3>
+                    <p>
+                        Roya validates splits, parties, and amounts, generating a
+                        machine-readable execution reference for review.
+                    </p>
+                    <div style="margin-top: 15px; padding: 10px; background: var(--light-gray); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Verification includes:</strong> Split percentages, total amounts, party validation
+                    </div>
+                </div>
+                
+                <div class="demo-step">
+                    <div class="step-number">3</div>
+                    <h3>Execution Reference Registration</h3>
+                    <p>
+                        The verified royalty logic is registered as an immutable reference
+                        to support transparency, auditability, and downstream reconciliation.
+                    </p>
+                    <div style="margin-top: 15px; padding: 10px; background: var(--light-gray); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Reference includes:</strong> Timestamp, verification hash, party IDs
+                    </div>
+                </div>
+                
+                <div class="demo-step">
+                    <div class="step-number">4</div>
+                    <h3>Payment Instruction Output</h3>
+                    <p>
+                        Structured payment instructions are generated for licensed
+                        payment or accounting providers. Roya does not move funds.
+                    </p>
+                    <div style="margin-top: 15px; padding: 10px; background: var(--light-gray); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Output formats:</strong> JSON, XML, CSV compatible with accounting systems
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Built for Modern Publisher Section -->
-    <section class="modern-publisher">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;">
-                Built for the Modern Swedish Publisher
-            </h2>
-            <p style="text-align: center; font-size: 1.2rem; color: var(--gray); max-width: 800px; margin: 0 auto 50px;">
-                Centralize your global title database, automate workflows, and maintain transparency across all operations.
-            </p>
-            
-            <div class="publisher-features">
-                <div class="publisher-feature">
-                    <div class="feature-number">1</div>
-                    <h3>Centralize Your Global Title Database</h3>
-                    <p>Move beyond messy spreadsheets. Track every detail of your catalog in one place — from ISWC codes to territory rights and splits.</p>
-                    <ul style="margin-top: 15px; padding-left: 20px; color: var(--gray);">
-                        <li>ISWC/IPI validation</li>
-                        <li>Territory rights management</li>
-                        <li>Single source of truth</li>
-                    </ul>
-                </div>
-                
-                <div class="publisher-feature">
-                    <div class="feature-number">2</div>
-                    <h3>Automate Complex Royalty Splits</h3>
-                    <p>Automate the most tedious part of publishing. Track subsidiary rights, manage advance recoupment, and generate professional statements.</p>
-                    <ul style="margin-top: 15px; padding-left: 20px; color: var(--gray);">
-                        <li>Multi-tier percentage splits</li>
-                        <li>Advance tracking</li>
-                        <li>Transparent reporting</li>
-                    </ul>
-                </div>
-                
-                <div class="publisher-feature">
-                    <div class="feature-number">3</div>
-                    <h3>Sync to the Global Supply Chain</h3>
-                    <p>Ensure your works are discoverable. Automate metadata updates across platforms and maintain accurate rights information.</p>
-                    <ul style="margin-top: 15px; padding-left: 20px; color: var(--gray);">
-                        <li>Metadata automation</li>
-                        <li>Rights database sync</li>
-                        <li>Global distribution</li>
-                    </ul>
-                </div>
+            <div class="note">
+                <strong>What this demo demonstrates:</strong>
+                <ul>
+                  <li>Standardized ingestion of Swedish royalty data</li>
+                  <li>Transparent verification of royalty splits</li>
+                  <li>Separation of verification and payment execution</li>
+                  <li>Generation of audit-friendly execution references</li>
+                  <li>Compatibility with existing payment infrastructure</li>
+                </ul>
             </div>
             
-            <div class="pro-tip">
-                <h4 style="color: var(--primary); margin-bottom: 15px;">Does this replace our current accounting software?</h4>
-                <p style="color: var(--dark); line-height: 1.8;">
-                    <strong>No.</strong> Our tool integrates with major accounting platforms like QuickBooks and Xero, 
-                    acting as the 'specialized engine' that handles the complex music-specific data 
-                    <strong>before</strong> syncing with your general ledger. We automate what accounting software can't: 
-                    ISWC validation, multi-territory splits, and Swedish tax calculations.
+            <div class="content-block">
+                <h2>Demo Environment Details</h2>
+                <h3>Test Data</h3>
+                <p>
+                    The demo uses anonymized, synthetic data based on typical Swedish music publishing scenarios.
+                    All data is generated for demonstration purposes and contains no real financial information.
+                </p>
+                
+                <h3>Technical Requirements</h3>
+                <ul>
+                    <li>Modern web browser (Chrome 80+, Firefox 75+, Safari 13+)</li>
+                    <li>JavaScript enabled</li>
+                    <li>No special plugins or downloads required</li>
+                </ul>
+                
+                <h3>Evaluation Feedback</h3>
+                <p>
+                    After experiencing the demo, evaluators are encouraged to provide feedback on:
+                </p>
+                <ul>
+                    <li>Clarity of the verification process</li>
+                    <li>Usability of the interface</li>
+                    <li>Relevance to Swedish music publishing workflows</li>
+                    <li>Potential integration points with existing systems</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#use-cases" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i> Explore Use Cases
+                </a>
+            </div>
+        `,
+        
+        'use-cases': `
+            <div class="page-header">
+                <h1 class="page-title">Use Cases</h1>
+                <p class="page-lead">
+                    Roya is designed to support multiple stakeholders in the Swedish
+                    music ecosystem by improving transparency, auditability, and trust
+                    across royalty workflows.
                 </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="org-logos">
-                <div class="org-logo">STIM Integration</div>
-                <div class="org-logo">NCB Calculations</div>
-                <div class="org-logo">DSP Compatibility</div>
-                <div class="org-logo">Blockchain Transparency</div>
-            </div>
-            
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Sound Protocol</h4>
-                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
-                        The transparency layer for Swedish music publishing. 
-                        Working with STIM, NCB, and global PROs to automate the "last mile" of royalty distribution.
+            <div class="use-cases">
+                <div class="use-case">
+                    <h3>For Music Publishers</h3>
+                    <p>
+                        Publishers use Roya to verify royalty calculations before initiating
+                        payments, reducing disputes, manual reconciliation, and administrative overhead.
                     </p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Ecosystem Integration</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">How We Work with STIM</a></li>
-                        <li><a href="#">NCB Mechanical Calculations</a></li>
-                        <li><a href="#">DSP Royalty Reports</a></li>
-                        <li><a href="#">International PRO Compatibility</a></li>
+                    <ul>
+                        <li><strong>Parse STIM/NCB royalty statements:</strong> Automatically extract and normalize data from standard formats</li>
+                        <li><strong>Validate splits before payment approval:</strong> Ensure accuracy before funds are disbursed</li>
+                        <li><strong>Export payment instructions to existing accounting systems:</strong> Seamless integration with current workflows</li>
+                        <li><strong>Generate audit trails:</strong> Maintain clear records of verification and approval</li>
+                        <li><strong>Reduce manual data entry errors:</strong> Automate verification of complex split logic</li>
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="show.html">STIM Import Demo</a></li>
-                        <li><a href="features.html">Transparency Features</a></li>
-                        <li><a href="solutions.html">Publisher Solutions</a></li>
-                        <li><a href="get-started.html">Integration Guide</a></li>
+                <div class="use-case">
+                    <h3>For Creators & Rights Holders</h3>
+                    <p>
+                        Creators gain visibility into how royalties are calculated and verified,
+                        without needing access to publisher accounting systems.
+                    </p>
+                    <ul>
+                        <li><strong>Clear view of split logic:</strong> Understand exactly how royalties are calculated</li>
+                        <li><strong>Verifiable execution references:</strong> Independently verify payment calculations</li>
+                        <li><strong>Improved trust and fewer disputes:</strong> Transparent processes reduce conflicts</li>
+                        <li><strong>Timely payment tracking:</strong> Monitor verification status in real-time</li>
+                        <li><strong>Historical verification access:</strong> Review past royalty calculations</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case">
+                    <h3>For Collecting Societies & Infrastructure</h3>
+                    <p>
+                        Roya demonstrates how standardized, machine-readable royalty data
+                        can reduce friction between systems and improve interoperability.
+                    </p>
+                    <ul>
+                        <li><strong>Cleaner downstream data:</strong> Pre-verified data reduces errors in collection systems</li>
+                        <li><strong>Audit-friendly references:</strong> Simplified compliance and reporting</li>
+                        <li><strong>Reduced manual exception handling:</strong> Fewer errors mean fewer corrections</li>
+                        <li><strong>Standardized data exchange:</strong> Consistent format across the ecosystem</li>
+                        <li><strong>Improved system interoperability:</strong> Easier integration between different platforms</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2026 Sound Protocol - Transparency Layer for Swedish Music Publishing. All rights reserved.</p>
-                <p style="margin-top: 10px;">
-                    <em>SMPT does not replace STIM, NCB, or DSPs. We provide transparency after their collection processes.</em>
+            <div class="content-block">
+                <h2>Industry Impact</h2>
+                <h3>Current Challenges</h3>
+                <p>
+                    The Swedish music publishing industry faces several challenges that Roya addresses:
+                </p>
+                <ul>
+                    <li><strong>Manual verification processes:</strong> Time-consuming and error-prone manual checks</li>
+                    <li><strong>Lack of standardization:</strong> Inconsistent data formats across systems</li>
+                    <li><strong>Limited transparency:</strong> Rights holders often lack visibility into calculations</li>
+                    <li><strong>High administrative costs:</strong> Significant resources spent on reconciliation</li>
+                    <li><strong>Payment delays:</strong> Verification bottlenecks slow down royalty distribution</li>
+                </ul>
+                
+                <h3>Roya's Solutions</h3>
+                <ul>
+                    <li><strong>Automated verification:</strong> Reduce manual work and errors</li>
+                    <li><strong>Standardized data format:</strong> Consistent machine-readable output</li>
+                    <li><strong>Transparent processes:</strong> Clear visibility for all stakeholders</li>
+                    <li><strong>Reduced administrative burden:</strong> Lower operational costs</li>
+                    <li><strong>Faster processing:</strong> Accelerate royalty distribution cycles</li>
+                </ul>
+                
+                <h3>Implementation Scenarios</h3>
+                <p>
+                    Roya can be implemented in various scenarios within the Swedish music ecosystem:
+                </p>
+                <ol>
+                    <li><strong>Direct publisher integration:</strong> Publishers integrate Roya into their existing accounting systems</li>
+                    <li><strong>Collecting society partnerships:</strong> STIM/NCB offer Roya as a verification service to members</li>
+                    <li><strong>Independent service provider:</strong> Roya operates as a standalone verification service</li>
+                    <li><strong>Technology platform integration:</strong> Music tech platforms embed Roya verification</li>
+                </ol>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#features" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i> Explore Core Features
+                </a>
+            </div>
+        `,
+        
+        'features': `
+            <div class="page-header">
+                <h1 class="page-title">Core Features</h1>
+                <p class="page-lead">
+                    Roya focuses on verification, not value transfer. Each feature is
+                    designed to improve reliability and compliance across existing systems.
                 </p>
             </div>
-        </div>
-    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate ecosystem items
-            const ecosystemItems = document.querySelectorAll('.ecosystem-item');
-            const features = document.querySelectorAll('.publisher-feature');
-            
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Animate ecosystem diagram
-            ecosystemItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(item);
-            });
-            
-            // Animate features
-            features.forEach((feature, index) => {
-                feature.style.opacity = '0';
-                feature.style.transform = 'translateY(20px)';
-                feature.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s, all 0.3s`;
-                observer.observe(feature);
-            });
-            
-            // Button hover effects
-            const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
-                });
+            <div class="features">
+                <div class="feature">
+                    <h3>Royalty Data Parsing & Normalization</h3>
+                    <p>
+                        Supports ingestion of STIM PDFs and structured files, transforming
+                        complex royalty statements into standardized, machine-readable data.
+                    </p>
+                    <ul>
+                        <li><strong>Multi-format support:</strong> PDF, CSV, Excel, JSON</li>
+                        <li><strong>Automatic data extraction:</strong> Intelligent parsing of complex documents</li>
+                        <li><strong>Data validation:</strong> Check for completeness and consistency</li>
+                        <li><strong>Normalization:</strong> Convert to standardized format</li>
+                        <li><strong>Error reporting:</strong> Detailed feedback on parsing issues</li>
+                    </ul>
+                </div>
                 
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+                <div class="feature">
+                    <h3>Split Verification Engine</h3>
+                    <p>
+                        Validates royalty splits, ownership percentages, and totals before
+                        any payment instruction is generated.
+                    </p>
+                    <ul>
+                        <li><strong>Mathematical validation:</strong> Ensure splits total 100%</li>
+                        <li><strong>Party verification:</strong> Validate rights holder identities</li>
+                        <li><strong>Historical comparison:</strong> Check against previous calculations</li>
+                        <li><strong>Rule-based validation:</strong> Apply custom business rules</li>
+                        <li><strong>Audit logging:</strong> Record all verification steps</li>
+                    </ul>
+                </div>
+                
+                <div class="feature">
+                    <h3>Execution Reference Registry</h3>
+                    <p>
+                        Creates immutable references that document verified royalty logic,
+                        supporting auditability without exposing sensitive banking data.
+                    </p>
+                    <ul>
+                        <li><strong>Immutable records:</strong> Tamper-evident verification records</li>
+                        <li><strong>Timestamping:</strong> Precise timing of verification</li>
+                        <li><strong>Reference generation:</strong> Unique IDs for each verification</li>
+                        <li><strong>Access control:</strong> Secure access to verification records</li>
+                        <li><strong>Export capabilities:</strong> Download verification proofs</li>
+                    </ul>
+                </div>
+                
+                <div class="feature">
+                    <h3>Payment Orchestration (No Funds Handling)</h3>
+                    <p>
+                        Outputs structured payment instructions for licensed payment,
+                        banking, or accounting providers.
+                    </p>
+                    <ul>
+                        <li><strong>Format flexibility:</strong> Multiple output formats (JSON, XML, CSV)</li>
+                        <li><strong>Provider compatibility:</strong> Designed for existing payment systems</li>
+                        <li><strong>Security:</strong> No sensitive banking data stored or transmitted</li>
+                        <li><strong>Error handling:</strong> Robust failure recovery</li>
+                        <li><strong>Status tracking:</strong> Monitor instruction delivery status</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Technical Architecture</h2>
+                <h3>System Design Principles</h3>
+                <p>
+                    Roya is built on several key design principles that ensure security, reliability, and compliance:
+                </p>
+                <ul>
+                    <li><strong>Separation of concerns:</strong> Clear separation between verification and payment execution</li>
+                    <li><strong>Data minimization:</strong> Only process data necessary for verification</li>
+                    <li><strong>Privacy by design:</strong> No storage of sensitive personal or financial data</li>
+                    <li><strong>Auditability:</strong> Complete traceability of all verification steps</li>
+                    <li><strong>Interoperability:</strong> Designed to work with existing systems</li>
+                </ul>
+                
+                <h3>Security Features</h3>
+                <ul>
+                    <li><strong>Encryption:</strong> All data encrypted in transit and at rest</li>
+                    <li><strong>Access controls:</strong> Role-based access to system features</li>
+                    <li><strong>Audit trails:</strong> Complete logging of all system actions</li>
+                    <li><strong>Compliance:</strong> Designed to support regulatory requirements</li>
+                    <li><strong>Regular security testing:</strong> Ongoing vulnerability assessment</li>
+                </ul>
+                
+                <h3>Integration Capabilities</h3>
+                <p>
+                    Roya can integrate with existing systems through multiple methods:
+                </p>
+                <ul>
+                    <li><strong>API integration:</strong> RESTful APIs for system-to-system communication</li>
+                    <li><strong>File-based integration:</strong> Batch processing of royalty files</li>
+                    <li><strong>Web interface:</strong> Manual upload and verification</li>
+                    <li><strong>Webhook support:</strong> Real-time notification of verification status</li>
+                    <li><strong>Export formats:</strong> Multiple output formats for different systems</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#documentation" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i> View Documentation
+                </a>
+            </div>
+        `,
+        
+        'documentation': `
+            <div class="page-header">
+                <h1 class="page-title">Technical & Evaluation Documentation</h1>
+                <p class="page-lead">
+                    This section provides supporting material for reviewers, partners,
+                    and technical evaluators.
+                </p>
+            </div>
+
+            <div class="doc-sections">
+                <div class="doc-section">
+                    <h3>System Architecture</h3>
+                    <p>
+                        Overview of Roya's modular verification and orchestration design.
+                        The system is built on a microservices architecture with clear separation
+                        between data ingestion, verification logic, and reference generation.
+                    </p>
+                    <ul>
+                        <li><strong>Ingestion Layer:</strong> Handles data input and normalization</li>
+                        <li><strong>Verification Engine:</strong> Core logic for validating royalty calculations</li>
+                        <li><strong>Reference Registry:</strong> Creates and stores verification references</li>
+                        <li><strong>Orchestration Layer:</strong> Manages workflow and output generation</li>
+                        <li><strong>API Gateway:</strong> External interface for system integration</li>
+                    </ul>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Data Flow & Privacy</h3>
+                    <p>
+                        Explanation of how Roya avoids handling funds or storing sensitive
+                        banking information. All payment data remains with licensed providers
+                        while Roya focuses on metadata verification.
+                    </p>
+                    <ul>
+                        <li><strong>Data minimization:</strong> Only processes data necessary for verification</li>
+                        <li><strong>No financial data storage:</strong> Bank details remain with payment providers</li>
+                        <li><strong>Pseudonymization:</strong> Rights holders identified by reference IDs</li>
+                        <li><strong>Encryption:</strong> All sensitive data encrypted at rest and in transit</li>
+                        <li><strong>Data retention:</strong> Limited storage duration for verification data</li>
+                    </ul>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Standards & Compatibility</h3>
+                    <p>
+                        Alignment with Swedish and European music and financial infrastructure.
+                        Roya supports STIM, NCB formats and is designed to work with existing
+                        accounting and payment systems.
+                    </p>
+                    <ul>
+                        <li><strong>STIM compatibility:</strong> Support for standard STIM statement formats</li>
+                        <li><strong>NCB integration:</strong> Compatibility with NCB data formats</li>
+                        <li><strong>ISO 20022:</strong> Alignment with international payment messaging standards</li>
+                        <li><strong>PSD2 compliance:</strong> Designed to support Open Banking requirements</li>
+                        <li><strong>Swedish e-identification:</strong> Support for BankID and other Swedish auth methods</li>
+                    </ul>
+                </div>
+                
+                <div class="doc-section">
+                    <h3>Limitations of the Prototype</h3>
+                    <p>
+                        Current scope, assumptions, and areas for future development.
+                        This prototype is limited to verification workflows and does not
+                        handle actual payment execution or fund custody.
+                    </p>
+                    <ul>
+                        <li><strong>Test environment only:</strong> Not suitable for production use</li>
+                        <li><strong>Limited scale:</strong> Designed for evaluation, not high-volume processing</li>
+                        <li><strong>Manual input:</strong> Some steps require manual intervention</li>
+                        <li><strong>No production integrations:</strong> Limited to demo systems</li>
+                        <li><strong>Feature limitations:</strong> Some advanced features not yet implemented</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <h2>Evaluation Resources</h2>
+                <h3>Test Data Sets</h3>
+                <p>
+                    For evaluation purposes, Roya provides several test data sets:
+                </p>
+                <ul>
+                    <li><strong>Simple royalty scenarios:</strong> Basic split calculations</li>
+                    <li><strong>Complex publishing deals:</strong> Multiple parties and territories</li>
+                    <li><strong>Error cases:</strong> Scenarios that should fail verification</li>
+                    <li><strong>Edge cases:</strong> Boundary conditions and unusual scenarios</li>
+                </ul>
+                
+                <h3>Evaluation Criteria</h3>
+                <p>
+                    Reviewers are encouraged to evaluate Roya against the following criteria:
+                </p>
+                <ul>
+                    <li><strong>Accuracy:</strong> Does verification correctly identify errors?</li>
+                    <li><strong>Usability:</strong> Is the interface intuitive for different user types?</li>
+                    <li><strong>Performance:</strong> How quickly does verification complete?</li>
+                    <li><strong>Security:</strong> Are appropriate security measures in place?</li>
+                    <li><strong>Compatibility:</strong> How well does it integrate with existing workflows?</li>
+                </ul>
+                
+                <h3>Feedback Mechanisms</h3>
+                <p>
+                    Multiple channels are available for providing evaluation feedback:
+                </p>
+                <ul>
+                    <li><strong>In-system feedback:</strong> Direct feedback within the demo interface</li>
+                    <li><strong>Evaluation forms:</strong> Structured feedback forms</li>
+                    <li><strong>Technical review:</strong> Deep-dive technical evaluation</li>
+                    <li><strong>Stakeholder interviews:</strong> Discussions with potential users</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#grant" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i> View Grant Documentation
+                </a>
+            </div>
+        `,
+        
+        'grant': `
+            <div class="page-header">
+                <h1 class="page-title">Grant & Evaluation Documentation</h1>
+                <p class="page-lead">
+                    This prototype is developed as part of a research and innovation
+                    initiative to improve transparency and trust in Swedish music royalty
+                    workflows.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h2>Project Purpose</h2>
+                <p>
+                    Roya explores how royalty metadata, splits, and execution logic can be 
+                    verified before payment initiation, reducing administrative friction 
+                    and disputes in the Swedish music publishing ecosystem.
+                </p>
+                <p>
+                    The project addresses several key industry challenges:
+                </p>
+                <ul>
+                    <li><strong>Lack of transparency:</strong> Rights holders often cannot verify how royalties are calculated</li>
+                    <li><strong>Manual verification processes:</strong> Time-consuming and error-prone manual checks</li>
+                    <li><strong>System fragmentation:</strong> Incompatible systems across the royalty chain</li>
+                    <li><strong>High administrative costs:</strong> Significant resources spent on reconciliation and dispute resolution</li>
+                    <li><strong>Payment delays:</strong> Verification bottlenecks slow down royalty distribution</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Scope of the Prototype</h2>
+                <p>
+                    The current Roya prototype focuses on demonstrating the core verification workflow:
+                </p>
+                <ul>
+                    <li><strong>Verification of royalty data:</strong> Mathematical validation of splits and calculations</li>
+                    <li><strong>Generation of execution references:</strong> Creating audit trails for verified calculations</li>
+                    <li><strong>Simulation of payment instruction workflows:</strong> Demonstrating integration with payment systems</li>
+                    <li><strong>Testnet-based evaluation environment:</strong> Safe testing without real financial transactions</li>
+                    <li><strong>Stakeholder feedback collection:</strong> Gathering input from potential users</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Out of Scope</h2>
+                <p>
+                    Important limitations and exclusions from the current prototype:
+                </p>
+                <ul>
+                    <li><strong>No custody of funds:</strong> Roya does not hold or transfer any money</li>
+                    <li><strong>No direct bank transfers:</strong> All payment execution is simulated</li>
+                    <li><strong>No storage of personal banking credentials:</strong> Roya never sees bank account details</li>
+                    <li><strong>No payment institution licensing requirements:</strong> Roya is a verification service, not a payment service</li>
+                    <li><strong>No production data processing:</strong> All data in the prototype is synthetic</li>
+                    <li><strong>No real-time production integrations:</strong> Current integrations are simulated</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Compliance & Risk Mitigation</h2>
+                <p>
+                    Roya is designed to operate alongside licensed payment and accounting
+                    providers, avoiding classification as a payment institution while
+                    supporting PSD2-aligned workflows. The system focuses on metadata
+                    verification rather than financial transaction processing.
+                </p>
+                <h3>Regulatory Considerations</h3>
+                <ul>
+                    <li><strong>PSD2 compliance:</strong> Designed to support Open Banking requirements without being a payment service</li>
+                    <li><strong>GDPR compliance:</strong> Data minimization and privacy by design principles</li>
+                    <li><strong>Financial regulation:</strong> Clear separation from regulated financial activities</li>
+                    <li><strong>Industry standards:</strong> Alignment with music industry data standards</li>
+                </ul>
+                <h3>Risk Management</h3>
+                <ul>
+                    <li><strong>Technical risks:</strong> Extensive testing and security measures</li>
+                    <li><strong>Operational risks:</strong> Clear boundaries around system responsibilities</li>
+                    <li><strong>Compliance risks:</strong> Ongoing legal review and compliance monitoring</li>
+                    <li><strong>Reputational risks:</strong> Transparent communication of system limitations</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Technology Overview</h2>
+                <p>
+                    The system uses a testnet-based registry to store execution references
+                    that support auditability and interoperability without exposing
+                    commercially sensitive data. All verification logic is open for review
+                    and designed for integration with existing systems.
+                </p>
+                <h3>Technical Stack</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> Modern web technologies (HTML5, CSS3, JavaScript)</li>
+                    <li><strong>Backend services:</strong> Microservices architecture with clear separation</li>
+                    <li><strong>Data storage:</strong> Secure, encrypted storage with access controls</li>
+                    <li><strong>APIs:</strong> RESTful interfaces for system integration</li>
+                    <li><strong>Security:</strong> Industry-standard encryption and security practices</li>
+                </ul>
+                <h3>Development Approach</h3>
+                <ul>
+                    <li><strong>Iterative development:</strong> Regular feedback cycles with stakeholders</li>
+                    <li><strong>Test-driven development:</strong> Comprehensive testing at all levels</li>
+                    <li><strong>Documentation focus:</strong> Clear documentation for all components</li>
+                    <li><strong>Open review:</strong> Architecture and code available for review</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Evaluation Status</h2>
+                <p>
+                    This prototype is currently in a controlled test environment and is
+                    intended solely for evaluation, feedback, and pilot discussions with
+                    Swedish music industry stakeholders.
+                </p>
+                <h3>Current Phase</h3>
+                <ul>
+                    <li><strong>Technical evaluation:</strong> Assessment of system architecture and security</li>
+                    <li><strong>Usability testing:</strong> Feedback from potential users</li>
+                    <li><strong>Industry review:</strong> Input from music industry stakeholders</li>
+                    <li><strong>Compliance review:</strong> Legal and regulatory assessment</li>
+                </ul>
+                <h3>Next Steps</h3>
+                <ul>
+                    <li><strong>Pilot program:</strong> Limited pilot with selected partners</li>
+                    <li><strong>Feature development:</strong> Adding requested features based on feedback</li>
+                    <li><strong>Integration testing:</strong> Testing with real systems</li>
+                    <li><strong>Production readiness:</strong> Preparing for limited production use</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Contact Information</h2>
+                <p>
+                    <strong>For evaluation inquiries:</strong><br>
+                    Roya Research Team<br>
+                    <a href="mailto:evaluation@roya.tech" style="color: var(--accent); text-decoration: none;">evaluation@roya.tech</a>
+                </p>
+                <p>
+                    <strong>Technical questions:</strong><br>
+                    Technical Documentation Team<br>
+                    <a href="mailto:tech@roya.tech" style="color: var(--accent); text-decoration: none;">tech@roya.tech</a>
+                </p>
+                <p>
+                    <strong>Industry partnerships:</strong><br>
+                    Business Development Team<br>
+                    <a href="mailto:partnerships@roya.tech" style="color: var(--accent); text-decoration: none;">partnerships@roya.tech</a>
+                </p>
+            </div>
+        `
+    };
+
+    // Get page from URL hash or default to index
+    const getCurrentPage = () => {
+        const hash = window.location.hash.replace('#', '');
+        return pageContent[hash] ? hash : 'index';
+    };
+
+    // Load page content
+    const loadPage = (page) => {
+        document.getElementById('page-content').innerHTML = pageContent[page];
+        
+        // Update active nav link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.style.fontWeight = '400';
+            if (link.getAttribute('href') === `#${page}` || (page === 'index' && link.getAttribute('href') === '#index')) {
+                link.style.fontWeight = '700';
+                link.style.color = 'var(--royal-blue)';
+            } else {
+                link.style.color = '';
+            }
         });
-    </script>
+    };
+
+    // Initial page load
+    loadPage(getCurrentPage());
+
+    // Handle hash changes
+    window.addEventListener('hashchange', () => {
+        loadPage(getCurrentPage());
+    });
+
+    // Update all internal links to use hash routing
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+            e.preventDefault();
+            window.location.hash = e.target.getAttribute('href');
+        }
+    });
+</script>
+
 </body>
 </html>

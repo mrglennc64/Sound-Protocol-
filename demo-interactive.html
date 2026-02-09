@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roya | Sound & Music Protocol Technology | Complete Demo</title>
+    <title>Roya | Sound & Music Protocol Technology | Evaluation Demo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.7.0/dist/web3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -45,7 +44,7 @@
         }
 
         body::after {
-            content: 'Roya-Demo-IP-Protected-' attr(data-user) '-' attr(data-timestamp);
+            content: 'Roya-Demo-Evaluation-' attr(data-user) '-' attr(data-timestamp);
             position: fixed;
             bottom: 5px;
             right: 5px;
@@ -130,16 +129,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-
-        .ip-banner {
-            background: linear-gradient(90deg, var(--primary) 0%, #1E3A8A 100%);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 4px solid var(--accent);
         }
 
         .demo-header {
@@ -733,6 +722,25 @@
             border-left: 5px solid #006aa8;
         }
 
+        /* Evaluation Disclaimer */
+        .evaluation-disclaimer {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        .evaluation-disclaimer h4 {
+            color: var(--warning);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         /* Utility */
         .hidden {
             display: none !important;
@@ -778,7 +786,7 @@
                 <i class="fas fa-bolt"></i>
                 <span>Roya</span>
             </div>
-            <h2>Loading Live Demo</h2>
+            <h2>Loading Evaluation Demo</h2>
             <div class="loading-facts">
                 <div class="loading-fact">
                     <i class="fas fa-check"></i>
@@ -786,22 +794,22 @@
                 </div>
                 <div class="loading-fact">
                     <i class="fas fa-check"></i>
-                    <span>Real Smart Contract Integration</span>
+                    <span>Smart Contract for Transparency Evaluation</span>
                 </div>
                 <div class="loading-fact">
                     <i class="fas fa-check"></i>
-                    <span>Swedish Music Industry Focus</span>
+                    <span>Swedish Music Industry Workflow</span>
                 </div>
                 <div class="loading-fact">
                     <i class="fas fa-check"></i>
-                    <span>Blockchain-Verified Royalty Splits</span>
+                    <span>Verifiable Execution Reference</span>
                 </div>
             </div>
             <div style="margin-top: 30px;">
                 <div style="width: 100%; height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden;">
                     <div id="loadingBar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.5s ease;"></div>
                 </div>
-                <p style="margin-top: 10px; opacity: 0.8; font-size: 14px;">Initializing Roya infrastructure...</p>
+                <p style="margin-top: 10px; opacity: 0.8; font-size: 14px;">Initializing Roya evaluation environment...</p>
             </div>
         </div>
     </div>
@@ -820,24 +828,24 @@
                 </div>
             </div>
             <div style="font-size: 12px; opacity: 0.9; background: rgba(255, 255, 255, 0.2); padding: 5px 12px; border-radius: 20px;">
-                Roya Infrastructure
+                Roya Verification Prototype
             </div>
         </div>
 
-        <!-- Header from first HTML -->
+        <!-- Header -->
         <div class="demo-header">
             <div class="logo">
                 <i class="fas fa-music"></i>
-                <span>A transparency and verification layer for Swedish music publishing workflows</span>
+                <span>Roya – Transparency & Verification Layer for Swedish Music Publishing</span>
             </div>
             <p class="subtitle">
-                Royalty Verification Infrastructure (Prototype) Live on Monad Testnet<br>
+                A transparency and verification layer for Swedish music publishing workflows<br>
                 <span style="color: var(--accent); font-weight: 600;">
-                    Verifiable • Deployable • Interactive • Roya
+                    Verifiable • Reviewable • Interactive • Roya
                 </span>
             </p>
             
-            <!-- Progress Steps from first HTML -->
+            <!-- Progress Steps -->
             <div class="progress-steps">
                 <div class="step active" id="step1">
                     <div class="step-circle">1</div>
@@ -855,11 +863,11 @@
             
             <div class="demo-status" id="demoStatus">
                 <i class="fas fa-bolt"></i>
-                <span>MONAD TESTNET • CHAIN ID: 10143 • Roya</span>
+                <span>Royalty Verification Prototype Live on Monad Testnet • CHAIN ID: 10143</span>
             </div>
         </div>
 
-        <!-- Tab Container from second HTML -->
+        <!-- Tab Container -->
         <div class="tab-container">
             <button class="tab active" onclick="switchTab('upload')">
                 <i class="fas fa-cloud-upload-alt"></i>
@@ -916,22 +924,26 @@
                         </div>
                     </div>
 
-                    <!-- Swedish Features from first HTML -->
+                    <!-- Evaluation Demo Section -->
                     <div class="swedish-features">
                         <h3 class="text-center mb-30">Interactive Evaluation Demo</h3>
-                        <div class="features-grid" style="display: flex; justify-content: flex-start; align-items: flex-start;">
-                            <div class="feature-item" style="max-width: 520px; width: 100%; margin-left: -30px; margin-right: auto; text-align:center;">
-                                <p style="font-size: 1.1em; font-weight: 500;">Experience the full Roya verification workflow with our evaluation demonstration.</p>
-                                <ul style="margin: 1em auto; display: inline-block; text-align: left;">
+                        <div class="features-grid" style="display: flex; justify-content: center; align-items: flex-start;">
+                            <div class="feature-item" style="max-width: 520px; width: 100%; margin: 0 auto;">
+                                <p>Experience the full Roya verification workflow with our evaluation demonstration.</p>
+                                <ul style="margin-top: 1em;">
                                     <li><strong>Upload:</strong> Upload a sample STIM royalty report</li>
                                     <li><strong>Verify:</strong> Watch as Roya validates splits and calculations</li>
                                     <li><strong>Generate:</strong> Create an immutable execution reference</li>
                                     <li><strong>Export:</strong> Generate sample payment instructions for downstream accounting or payment systems</li>
                                 </ul>
-                                <div style="margin-top: 1.5em; font-weight: bold;">Evaluation Environment Notice</div>
-                                <div style="margin-top: 0.5em; font-size: 0.98em;">
-                                    This is a testnet demonstration for evaluation purposes only. No real financial transactions occur.<br>
-                                    Roya does not custody funds or initiate payments. All smart contracts are deployed in test environments for transparency and review.
+                                
+                                <!-- Evaluation Disclaimer -->
+                                <div class="evaluation-disclaimer mt-30">
+                                    <h4>
+                                        <i class="fas fa-info-circle"></i>
+                                        Evaluation Environment Notice
+                                    </h4>
+                                    <p>This is a testnet demonstration for evaluation purposes only. No real financial transactions occur. Roya does not custody funds or initiate payments. All smart contracts are deployed in test environments for transparency and review.</p>
                                 </div>
                             </div>
                         </div>
@@ -989,11 +1001,11 @@
                         <div class="action-buttons">
                             <button class="btn btn-primary" onclick="createSmartContract()" id="createContractBtn">
                                 <i class="fas fa-file-contract"></i>
-                                Create Smart Contract
+                                Create Execution Reference
                             </button>
                             <button class="btn btn-success" onclick="downloadPDF()" id="downloadPdfBtn" style="display: none;">
                                 <i class="fas fa-file-pdf"></i>
-                                Download PDF
+                                Download Verification Report
                             </button>
                         </div>
                     </div>
@@ -1004,23 +1016,23 @@
                     <div class="blockchain-section">
                         <div class="blockchain-header">
                             <i class="fas fa-link"></i>
-                            <h3>Live Contract</h3>
+                            <h3>Execution Reference Verification</h3>
                         </div>
                         
                         <div class="tx-details">
-                            <div class="tx-label">Contract Address (LIVE)</div>
+                            <div class="tx-label">Prototype Contract Address (Evaluation)</div>
                             <div class="tx-value" style="color: var(--accent); font-weight: 700;">
                                 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4
                             </div>
                             
-                            <div class="tx-label">Network</div>
+                            <div class="tx-label">Evaluation Network</div>
                             <div class="tx-value">
-                                Monad Testnet • Chain ID: 10143 (0x279f)
+                                Monad Testnet • Chain ID: 10143 (0x279f) • Evaluation Environment
                             </div>
                             
-                            <div class="tx-label">Status</div>
+                            <div class="tx-label">Verification Status</div>
                             <div class="tx-value" style="color: var(--success);">
-                                ✅ <strong>LIVE & VERIFIABLE</strong>
+                                ✅ <strong>DEPLOYED FOR TRANSPARENCY REVIEW</strong>
                             </div>
                         </div>
                         
@@ -1029,7 +1041,7 @@
                                class="explorer-link" 
                                target="_blank">
                                 <i class="fas fa-external-link-alt"></i>
-                                View Live Contract
+                                View Contract on Explorer
                             </a>
                             
                             <a href="https://testnet.monadexplorer.com/address/0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4#code" 
@@ -1037,7 +1049,7 @@
                                style="background: var(--success);"
                                target="_blank">
                                 <i class="fas fa-code"></i>
-                                View Contract Code
+                                Review Contract Source Code
                             </a>
                         </div>
                     </div>
@@ -1045,14 +1057,14 @@
                     <div style="background: white; border-radius: var(--radius); padding: 25px; margin-top: 30px; box-shadow: var(--shadow);">
                         <h4 style="color: var(--dark); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
                             <i class="fas fa-wallet"></i>
-                            Web3 Wallet Connection
+                            Web3 Wallet Connection (Optional)
                         </h4>
                         <p style="color: var(--gray); font-size: 14px; margin-bottom: 20px;">
-                            Connect MetaMask to interact with the live Monad Testnet infrastructure.
+                            Connect MetaMask to interact with the Monad Testnet evaluation environment. This is for demonstration purposes only.
                         </p>
                         <button class="btn btn-success" onclick="connectWallet()" style="width: 100%;" id="connectBtn">
                             <i class="fas fa-wallet"></i>
-                            Connect MetaMask
+                            Connect MetaMask (Demo)
                         </button>
                         <div id="walletStatus" style="margin-top: 20px; padding: 15px; background: var(--light); border-radius: var(--radius); display: none;">
                         </div>
@@ -1064,16 +1076,24 @@
                     <div style="padding: 20px;">
                         <h3 style="color: var(--primary); margin-bottom: 20px;">
                             <i class="fas fa-money-check-alt"></i>
-                            Payment Simulation
+                            Payment Instruction Simulation
                         </h3>
                         <p style="color: var(--gray); margin-bottom: 30px;">
-                            Simulate royalty payments and watch automatic distribution.
+                            Simulate royalty distribution and view sample payment instructions generated from the execution reference.
                         </p>
                         
                         <button class="btn btn-success" onclick="simulatePayment()" style="width: 100%; padding: 20px; font-size: 18px;" id="simulatePaymentBtn">
                             <i class="fas fa-play"></i>
-                            Simulate $50,000 Royalty Payment
+                            Simulate $50,000 Royalty Distribution (Sample)
                         </button>
+
+                        <div class="evaluation-disclaimer mt-30">
+                            <h4>
+                                <i class="fas fa-info-circle"></i>
+                                Simulation Notice
+                            </h4>
+                            <p>This simulation generates sample payment instructions for evaluation purposes. No actual payments are initiated. The output is designed for review by accounting or payment systems for workflow evaluation.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1105,16 +1125,15 @@
                         <div style="width: 150px; height: 150px; background: rgba(139, 92, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
                             <i class="fas fa-link" style="font-size: 60px; color: var(--blockchain);"></i>
                         </div>
-                        <h2 style="color: var(--primary); margin-bottom: 15px;">Deployed on Monad Testnet (Evaluation Environment)</h2>
+                        <h2 style="color: var(--primary); margin-bottom: 15px;">Execution Reference Deployed</h2>
                         <p style="color: var(--gray); max-width: 600px; margin: 0 auto 30px;">
-                            Your split sheet contract is deployed and verifiable on the blockchain.
-                            All royalty splits are now immutable and automatically executable.
+                            Your split sheet data has been converted into a verifiable execution reference deployed on Monad Testnet for transparency review.
                         </p>
                         
                         <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: var(--radius); margin: 40px 0;">
                             <h4 style="color: var(--success); margin-bottom: 10px;">
                                 <i class="fas fa-check-circle"></i>
-                                Infrastructure Verified
+                                Available for Technical Review
                             </h4>
                             <p style="color: var(--gray); font-size: 14px;">
                                 Contract deployed at: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4
@@ -1126,26 +1145,26 @@
                 <div id="paymentsVisualization" class="tab-content">
                     <div class="payment-flow">
                         <div class="split-header">
-                            <h2>Automatic Payment Distribution</h2>
-                            <p>Watch how royalties automatically flow to contributors</p>
+                            <h2>Sample Payment Distribution Simulation</h2>
+                            <p>Review how royalty distributions would flow based on execution reference</p>
                         </div>
 
                         <div class="payment-steps">
                             <div class="payment-step" id="paymentStep1">
                                 <div class="step-number">1</div>
-                                <div class="step-label">Royalty In</div>
+                                <div class="step-label">Royalty Received</div>
                             </div>
                             <div class="payment-step" id="paymentStep2">
                                 <div class="step-number">2</div>
-                                <div class="step-label">Smart Split</div>
+                                <div class="step-label">Split Calculation</div>
                             </div>
                             <div class="payment-step" id="paymentStep3">
                                 <div class="step-number">3</div>
-                                <div class="step-label">Auto Pay</div>
+                                <div class="step-label">Instruction Generation</div>
                             </div>
                             <div class="payment-step" id="paymentStep4">
                                 <div class="step-number">4</div>
-                                <div class="step-label">Complete</div>
+                                <div class="step-label">Review Complete</div>
                             </div>
                         </div>
 
@@ -1153,11 +1172,11 @@
                             <div class="payment-grid">
                                 <div class="payment-card">
                                     <div class="payment-amount" id="totalPayment">$50,000</div>
-                                    <div class="payment-label">Total Royalty Received</div>
+                                    <div class="payment-label">Sample Royalty Amount</div>
                                 </div>
                                 <div class="payment-card success">
                                     <div class="payment-amount" id="distributedAmount">$50,000</div>
-                                    <div class="payment-label">100% Distributed to Artists</div>
+                                    <div class="payment-label">100% Allocated to Contributors</div>
                                 </div>
                                 <div class="payment-card">
                                     <div class="payment-amount">$0</div>
@@ -1165,14 +1184,14 @@
                                 </div>
                                 <div class="payment-card warning">
                                     <div class="payment-amount">0.3s</div>
-                                    <div class="payment-label">Settlement Time</div>
+                                    <div class="payment-label">Simulation Time</div>
                                 </div>
                             </div>
 
                             <div style="background: var(--light); padding: 25px; border-radius: var(--radius); margin-top: 30px;">
                                 <h4 style="color: var(--primary); margin-bottom: 20px;">
                                     <i class="fas fa-users"></i>
-                                    Payment Distribution
+                                    Sample Payment Distribution (For Review)
                                 </h4>
                                 <div id="paymentDistribution">
                                 </div>
@@ -1189,40 +1208,38 @@
                 <div>
                     <h4 style="color: white; margin-bottom: 15px;">
                         <i class="fas fa-rocket"></i>
-                        Live Infrastructure
+                        Evaluation Environment
                     </h4>
                     <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; line-height: 1.6;">
                         This demo uses smart contracts deployed on Monad Testnet exclusively for testing, evaluation, and transparency review.
-                        All transactions are verifiable on-chain via the explorer.
                     </p>
                 </div>
                 
                 <div>
                     <h4 style="color: white; margin-bottom: 15px;">
                         <i class="fas fa-graduation-cap"></i>
-                        Roya
+                        Technical Evaluation
                     </h4>
                     <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; line-height: 1.6;">
                         Built for ecosystem grants and technical evaluation. Demonstrates verifiable execution logic, on-chain transparency, and reviewable documentation.
-                        
                     </p>
                 </div>
                 
                 <div>
                     <h4 style="color: white; margin-bottom: 15px;">
                         <i class="fas fa-external-link-alt"></i>
-                        Explorer Links
+                        Explorer Links (Review)
                     </h4>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="https://testnet.monadexplorer.com/address/0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4" 
                            target="_blank" 
                            style="color: var(--accent); text-decoration: none; font-size: 14px;">
-                            • Contract Address
+                            • Contract Address (Review)
                         </a>
                         <a href="https://testnet.monadexplorer.com/address/0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4#code" 
                            target="_blank" 
                            style="color: var(--accent); text-decoration: none; font-size: 14px;">
-                            • Verified Source Code
+                            • Verified Source Code (Review)
                         </a>
                         <a href="https://faucet.monad.xyz" 
                            target="_blank" 
@@ -1235,10 +1252,13 @@
             
             <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
                 <p style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">
-                    Roya • Royalty Verification Infrastructure (Prototype) • Live on Monad Testnet • STIM/NCB Integration
+                    Roya • Royalty Verification Infrastructure (Prototype) • Live on Monad Testnet • STIM/NCB Workflow Evaluation
                 </p>
                 <p style="color: rgba(255, 255, 255, 0.4); font-size: 12px; margin-top: 10px;">
                     Built for ecosystem grants and investor review. Contract: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4
+                </p>
+                <p style="color: rgba(255, 255, 255, 0.3); font-size: 11px; margin-top: 10px; font-style: italic;">
+                    This is an evaluation prototype. No financial transactions occur. All outputs are for review and workflow evaluation purposes.
                 </p>
             </div>
         </div>
@@ -1551,7 +1571,7 @@
         const COLORS = ['#FF6B35', '#10B981', '#3B82F6', '#8B5CF6', '#F59E0B', '#EC4899', '#14B8A6'];
 
         function initializeDemo() {
-            // Sample data for Swedish publishing from first HTML
+            // Sample data for Swedish publishing
             window.swedishRoyaltyData = [
                 { name: "Erik Svensson", iswc: "T-345.678.123-1", share: 40, amount: 57026.80, tax: 14256.70, net: 42770.10 },
                 { name: "Anna Berg", iswc: "T-987.654.321-2", share: 25, amount: 35641.75, tax: 8910.44, net: 26731.31 },
@@ -1563,7 +1583,7 @@
                 { name: "Ida Pettersson", iswc: "T-567.891.234-8", share: 0.5, amount: 712.84, tax: 178.21, net: 534.63 }
             ];
 
-            // Initialize steps from first HTML
+            // Initialize steps
             steps = document.querySelectorAll('.step');
             
             document.body.setAttribute('data-timestamp', new Date().toISOString());
@@ -1572,8 +1592,8 @@
                 web3 = new Web3(window.ethereum);
             }
             
-            console.log('%c🔒 Roya - IP Protected', 'color: #FFD700; font-size: 16px; font-weight: bold;');
-            console.log('%cThis demo shows infrastructure only. Proprietary logic is protected.', 'color: #10B981;');
+            console.log('%c🔒 Roya - Evaluation Environment', 'color: #FFD700; font-size: 16px; font-weight: bold;');
+            console.log('%cThis demo shows verification infrastructure for evaluation purposes.', 'color: #10B981;');
         }
 
         function switchTab(tabName) {
@@ -1595,7 +1615,7 @@
             document.getElementById(tabName + 'Tab').classList.add('active');
             document.getElementById(tabName + 'Visualization').classList.add('active');
             
-            // Update progress steps from first HTML
+            // Update progress steps
             if (steps) {
                 steps.forEach(step => step.classList.remove('active', 'completed'));
                 
@@ -1698,7 +1718,7 @@
         }
         
         function loadSampleData() {
-            // Use sample data from first HTML but adapt to second HTML format
+            // Use sample data but adapt to format
             const sampleData = swedishRoyaltyData.map(item => ({
                 name: item.name,
                 percentage: item.share,
@@ -1717,7 +1737,7 @@
             steps[0].classList.add('completed');
             steps[1].classList.add('active');
             
-            console.log(`✅ Loaded sample STIM data: ${sampleData.length} contributors`);
+            console.log(`✅ Loaded sample STIM data for evaluation: ${sampleData.length} contributors`);
         }
         
         function generateSampleWallet(name) {
@@ -1794,7 +1814,7 @@
                 <div class="info-item">
                     <div class="info-label">${corrections > 0 ? 'Auto-Corrected' : 'Status'}</div>
                     <div class="info-value ${corrections > 0 ? '' : 'verified'}">
-                        ${corrections > 0 ? `<i class="fas fa-magic" style="color: var(--warning);"></i> ${corrections} fix${corrections > 1 ? 'es' : ''}` : '✓ Ready'}
+                        ${corrections > 0 ? `<i class="fas fa-magic" style="color: var(--warning);"></i> ${corrections} fix${corrections > 1 ? 'es' : ''}` : '✓ Ready for Verification'}
                     </div>
                 </div>
             `;
@@ -1851,7 +1871,7 @@
 
             const btn = document.getElementById('downloadPdfBtn');
             const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating Verification Report...';
             btn.disabled = true;
 
             try {
@@ -1861,32 +1881,37 @@
                 // Title
                 doc.setFontSize(24);
                 doc.setTextColor(15, 27, 61);
-                doc.text('ROYALTY SPLIT AGREEMENT', 105, 25, { align: 'center' });
+                doc.text('EXECUTION REFERENCE VERIFICATION REPORT', 105, 25, { align: 'center' });
                 
                 // Powered by Roya
                 doc.setFontSize(10);
                 doc.setTextColor(100, 116, 139);
-                doc.text('A transparency and verification layer for Swedish music publishing workflows', 105, 33, { align: 'center' });
+                doc.text('Generated by Roya - Transparency & Verification Layer', 105, 33, { align: 'center' });
+                
+                // Evaluation Environment Notice
+                doc.setFontSize(9);
+                doc.setTextColor(239, 68, 68);
+                doc.text('EVALUATION ENVIRONMENT - FOR REVIEW PURPOSES ONLY', 105, 40, { align: 'center' });
                 
                 // Blockchain Info
                 doc.setFontSize(9);
                 doc.setTextColor(139, 92, 246);
-                doc.text('Deployed on Monad Testnet', 105, 40, { align: 'center' });
-                doc.text('Contract: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4', 105, 46, { align: 'center' });
+                doc.text('Deployed on Monad Testnet (Evaluation)', 105, 46, { align: 'center' });
+                doc.text('Contract: 0xAa19bFC7Bd852efe49ef31297bB082FB044B2ea4', 105, 52, { align: 'center' });
                 
                 // Date
                 doc.setFontSize(10);
                 doc.setTextColor(100, 116, 139);
                 const now = new Date();
-                doc.text(`Generated: ${now.toLocaleString()}`, 105, 55, { align: 'center' });
+                doc.text(`Generated: ${now.toLocaleString()}`, 105, 60, { align: 'center' });
                 
                 // Section Header
                 doc.setFontSize(14);
                 doc.setTextColor(15, 27, 61);
-                doc.text('Contributor Split Breakdown', 20, 70);
+                doc.text('Royalty Split Analysis (For Review)', 20, 75);
                 
                 // Table Header
-                const startY = 80;
+                const startY = 85;
                 doc.setFillColor(15, 27, 61);
                 doc.rect(20, startY, 170, 10, 'F');
                 
@@ -1935,7 +1960,7 @@
                 const total = currentData.reduce((sum, item) => sum + item.percentage, 0);
                 doc.text(`Total Split: ${total}%`, 125, y + 7);
                 
-                // Footer
+                // Disclaimer
                 y += 15;
                 if (y > 250) {
                     doc.addPage();
@@ -1946,22 +1971,22 @@
                 doc.setFont(undefined, 'normal');
                 doc.setTextColor(100, 116, 139);
                 
-                const footerText = 'This document outlines the royalty distribution agreement. All contributors agree to the percentages listed above. Payments will be distributed automatically via smart contract to the wallet addresses specified.';
-                const splitText = doc.splitTextToSize(footerText, 170);
+                const disclaimerText = 'This document is an execution reference verification report generated for evaluation purposes. It represents sample data and workflow verification. No actual payments are initiated or processed. This output is designed for review by accounting or payment systems for workflow evaluation.';
+                const splitText = doc.splitTextToSize(disclaimerText, 170);
                 doc.text(splitText, 20, y + 10);
                 
                 // IP Protection Notice
                 y += 25;
                 doc.setFontSize(8);
                 doc.setTextColor(239, 68, 68);
-                doc.text('CONFIDENTIAL - This document is generated by Roya for demonstration purposes.', 105, y + 10, { align: 'center' });
+                doc.text('EVALUATION PROTOTYPE - FOR TECHNICAL REVIEW ONLY', 105, y + 10, { align: 'center' });
                 doc.text('Intellectual Property Protected © 2026 Roya', 105, y + 15, { align: 'center' });
                 
                 // Save the PDF
-                const fileName = `Roya_Splits_${new Date().getTime()}.pdf`;
+                const fileName = `Roya_Verification_Report_${new Date().getTime()}.pdf`;
                 doc.save(fileName);
                 
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> PDF Downloaded';
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Report Downloaded';
                 setTimeout(() => {
                     btn.innerHTML = originalHTML;
                     btn.disabled = false;
@@ -1969,7 +1994,7 @@
                 
             } catch (error) {
                 console.error('Error generating PDF:', error);
-                alert('Failed to generate PDF. Please try again.');
+                alert('Failed to generate verification report. Please try again.');
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }
@@ -1982,11 +2007,11 @@
             }
             
             const btn = document.getElementById('createContractBtn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Contract...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Execution Reference...';
             btn.disabled = true;
             
             setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> Contract Created!';
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Execution Reference Created!';
                 btn.style.background = 'var(--success)';
                 
                 // Switch to blockchain tab to show contract details
@@ -2025,7 +2050,7 @@
                 walletStatus.style.display = 'block';
                 walletStatus.innerHTML = `
                     <div style="color: var(--success); font-weight: 600; margin-bottom: 10px;">
-                        <i class="fas fa-check-circle"></i> Wallet Connected
+                        <i class="fas fa-check-circle"></i> Wallet Connected (Evaluation)
                     </div>
                     <div style="font-family: monospace; font-size: 14px; color: var(--gray);">
                         ${userWallet.substring(0, 8)}...${userWallet.substring(userWallet.length - 6)}
@@ -2070,7 +2095,7 @@
             }
             
             const btn = document.getElementById('simulatePaymentBtn');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing Payment...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Simulating Distribution...';
             btn.disabled = true;
             
             document.getElementById('paymentDetails').style.display = 'block';
@@ -2100,8 +2125,11 @@
             }).join('');
             
             setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> Payment Complete';
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Simulation Complete';
                 btn.style.background = 'var(--success)';
+                
+                // Show additional disclaimer
+                alert('✅ Simulation Complete\n\nThis simulation generated sample payment instructions for review purposes only.\n\n• No actual payments were initiated\n• All outputs are for workflow evaluation\n• Review the distribution above for verification');
             }, 4000);
         }
 
